@@ -2,24 +2,26 @@ package pl.mateuszharazin.restapi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
-@Table(name = "userRole")
+@Table(name = "user_role")
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userRoleId")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_role_id")
     private int id;
 
-    @Column(name = "userRoleName")
+    @Column(name = "user_role_name")
     private String roleName;
 
-    @Column(name = "userRoleDesc")
+    @Column(name = "user_role_desc")
     private String roleDesc;
 }

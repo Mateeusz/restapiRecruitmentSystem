@@ -25,6 +25,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    private CustomLoginSuccessHandler successHandler;
+
     @Value("${spring.queries.users-query}")
     private String usersQuery;
 
@@ -43,14 +46,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
-                .antMatchers("/home/**").hasAnyAuthority("SUPER ADMIN", "ADMIN", "SITE USER")
+                .antMatchers("/home/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER", "SITE_USER")
+                .antMatchers("/admin/**").hasAnyAuthority("SUPER_USER", "ADMIN_USER")
                 .anyRequest().authenticated()
                 .and()
                 // form login
                 .csrf().disable().formLogin()
                 .loginPage("/login")
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/home")
+                .successHandler(successHandler)
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .and()
@@ -64,7 +68,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+//        web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/js/**");
+
     }
 
 }
