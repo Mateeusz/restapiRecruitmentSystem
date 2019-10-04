@@ -65,6 +65,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/").and()
                 .exceptionHandling()
                 .accessDeniedPage("/access-denied");
+
+        httpSecurity.sessionManagement().maximumSessions(1).expiredUrl("/login?expired=true");
+
     }
 
     @Override

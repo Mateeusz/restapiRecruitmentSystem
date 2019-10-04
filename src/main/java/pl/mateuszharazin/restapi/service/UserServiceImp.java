@@ -35,6 +35,7 @@ public class UserServiceImp implements UserService {
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 //        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
+//        userRepository.save(user);
         System.out.println("TUTAJ: 2 ->> " + user.toString());
         System.out.println("lalala--->>>>>   + " + userRole.getId() );
         System.out.println("DONE");
