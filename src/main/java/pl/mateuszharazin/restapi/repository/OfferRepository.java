@@ -7,5 +7,7 @@ import pl.mateuszharazin.restapi.model.Role;
 public interface OfferRepository extends JpaRepository<Offer, Integer> {
 
     public Offer findAllById(int id);
+    public Offer findById(int id);
+//    public void updateOffer(Offer offer);
 
 }

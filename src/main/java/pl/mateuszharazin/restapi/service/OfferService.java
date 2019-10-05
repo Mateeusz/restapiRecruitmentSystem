@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface OfferService {
 
-    public void saveOffer(Offer offer);
+    public void deleteOffer(int id);
+//    public void editOffer(Offer offer);
+    public void newOffer(Offer offer);
     public List<Offer> listOffer();
 
 }

@@ -6,6 +6,25 @@
 </head>
 <body>
 <h1>Hello Admin!</h1>
+    <form th:action="@{/home/offers}" method="GET" class="form-signin">
+        <h3 class="form-signin-heading" th:text="Existing offers"></h3>
+        <button  type="Submit" th:text="ShowOffer"></button>
+    </form>
+
+    <form th:action="@{/admin/offers/add}" method="GET" class="form-signin">
+        <h3 class="form-signin-heading" th:text="NewOffer"></h3>
+        <button type="Submit" th:text="AddNewOffer"></button>
+    </form>
+
+    <form th:action="@{/admin/offers/edit}" method="GET" class="form-signin">
+        <h3 class="form-signin-heading" th:text="EditOffer"></h3>
+        <button type="Submit" th:text="AddNewOffer"></button>
+    </form>
+
+    <form th:action="@{/admin/offers/delete}" method="GET" class="form-signin">
+        <h3 class="form-signin-heading" th:text="DeleteOffer"></h3>
+        <button type="Submit" th:text="AddNewOffer"></button>
+    </form>
 
 </body>
 </html>

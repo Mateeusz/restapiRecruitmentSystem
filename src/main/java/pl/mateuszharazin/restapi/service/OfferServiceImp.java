@@ -8,15 +8,28 @@ import pl.mateuszharazin.restapi.repository.OfferRepository;
 import java.util.List;
 
 @Service
-public class OfferServiceImp implements OfferService{
+public class OfferServiceImp implements OfferService {
 
 
     @Autowired
     OfferRepository offerRepository;
 
+    @Override
+    public void deleteOffer(int id) {
+
+        Offer offer = offerRepository.findById(id);
+        if(offer != null) {
+            offerRepository.delete(offer);
+        }
+    }
+
+//    @Override
+//    public void editOffer(Offer offer) {
+//        offerRepository.updateOffer(offer);
+//    }
 
     @Override
-    public void saveOffer(Offer offer) {
+    public void newOffer(Offer offer) {
         //tutaj można by dopisać do oferty człowieka który ją dodał
         offerRepository.save(offer);
     }
