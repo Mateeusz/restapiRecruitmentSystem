@@ -8,6 +8,7 @@ import java.util.List;
 public interface OfferService {
 
     public void deleteOffer(int id);
+    public Offer getOffer(int id);
 //    public void editOffer(Offer offer);
     public void newOffer(Offer offer);
     public List<Offer> listOffer();

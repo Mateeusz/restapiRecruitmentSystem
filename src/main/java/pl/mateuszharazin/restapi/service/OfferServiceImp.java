@@ -17,10 +17,11 @@ public class OfferServiceImp implements OfferService {
     @Override
     public void deleteOffer(int id) {
 
-        Offer offer = offerRepository.findById(id);
-        if(offer != null) {
-            offerRepository.delete(offer);
-        }
+        offerRepository.deleteById(id);
+    }
+
+    public Offer getOffer(int id) {
+        return offerRepository.findById(id);
     }
 
 //    @Override
