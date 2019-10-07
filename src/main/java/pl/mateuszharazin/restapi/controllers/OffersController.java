@@ -1,20 +1,16 @@
 package pl.mateuszharazin.restapi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.mateuszharazin.restapi.model.Offer;
-import pl.mateuszharazin.restapi.model.User;
-import pl.mateuszharazin.restapi.repository.OfferRepository;
 import pl.mateuszharazin.restapi.service.OfferService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class OffersController {
@@ -22,12 +18,19 @@ public class OffersController {
     @Autowired
     OfferService offerService;
 
+//    public String viewHomePage(Model model) {
+//        List<Product> listProducts = service.listAll();
+//        model.addAttribute("listProducts", listProducts);
+//
+//        return "index";
+//    }
 
     @RequestMapping(value = "/home/offers", method = RequestMethod.GET)
     public ModelAndView showOffers() {
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("offer", offerService.listOffer().get(1));
+//        List<Offer> offerList = offerService.listOffer();
+        modelAndView.addObject("offerList", offerService.listOffer());
         modelAndView.setViewName("offers");
         return modelAndView;
     }
@@ -85,7 +88,7 @@ public class OffersController {
             System.out.println("~Mat: Success! ---> " + offer.toString());
         }
         modelAndView.addObject("offer", new Offer());
-        modelAndView.setViewName("admin"); // resources/template/offerForm.html
+        modelAndView.setViewName("offerForm"); // resources/template/offerForm.html
 
         return modelAndView;
     }
@@ -107,6 +110,29 @@ public class OffersController {
         return modelAndView;
     }
 
+    @RequestMapping("/edit/{id}")
+    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
+        ModelAndView modelAndView = new ModelAndView("editOffer");
+        Offer offer = offerService.getOffer(id);
+        modelAndView.addObject("offer", offer);
+
+        return modelAndView;
+    }
+
+//    FIXME
+    @RequestMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable(name = "id") int id) {
+        offerService.deleteOffer(id);
+        return "redirect:/";
+    }
+
+//    Podmianę obiektów zrób!!!
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute("product") Offer offer) {
+        offerService.newOffer(offer);
+
+        return "redirect:/";
+    }
 //    @RequestMapping(value = "admin/offers/delete", method = RequestMethod.GET)
 //    public ModelAndView deleteOffer() {
 //        ModelAndView modelAndView = new ModelAndView();
