@@ -121,12 +121,6 @@ public class OffersController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = "/home/deleteoffer", method = RequestMethod.GET)
-//    public ModelAndView editOffer() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("editOffer");
-//        return modelAndView;
-//    }
 
     @RequestMapping(value = "/home/editoffer/{id}", method = RequestMethod.GET)
     public ModelAndView updateOffer(@PathVariable(name = "id") int id) {
@@ -138,75 +132,9 @@ public class OffersController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = "/home/editoffer/{id}", method = RequestMethod.POST)
-//    public ModelAndView putOffer(@RequestBody Offer newOffer, @PathVariable(name = "id") int id) {
-////        ModelAndView modelAndView = new ModelAndView();
-////        modelAndView.setViewName("editOffer");
-////        modelAndView.addObject(offerRepository.findById(id)
-////                .map(offer -> {
-////                    if(newOffer.getTitle()!=null && !newOffer.getTitle().isEmpty()) {
-////                        offer.setTitle(newOffer.getTitle());
-////                    }
-////                    if(newOffer.getSalary()!=0 && newOffer.getSalary()>0) {
-////                        offer.setSalary(newOffer.getSalary());
-////                    }
-////                    if(newOffer.getDescription()!=null && newOffer.getDescription().isEmpty()) {
-////                        offer.setDescription(newOffer.getDescription());
-////                    }
-////                    if(newOffer.getRequirements()!=null && newOffer.getRequirements().isEmpty()) {
-////                        offer.setRequirements(newOffer.getRequirements());
-////                    }
-////                    if(newOffer.getVacantNumber()!=0 && newOffer.getVacantNumber()>0) {
-////                        offer.setVacantNumber(newOffer.getVacantNumber());
-////                    }
-////                    offerRepository.save(offer);
-////                })
-////                .orElseGet(() -> {
-////                    newOffer.setId(id);
-////                    offerRepository.save(newOffer);
-////                }));
-//        ModelAndView modelAndView = new ModelAndView();
-//        Offer offer = offerRepository.findAllById(id);
-//        offer.setTitle(newOffer.getTitle());
-//        offer.setSalary(newOffer.getSalary());
-//        offer.setDescription(newOffer.getDescription());
-//        offer.setRequirements(newOffer.getRequirements());
-//        offer.setVacantNumber(newOffer.getVacantNumber());
-//
-//        modelAndView.addObject("offerDetail", offer);
-//        offerService.newOffer(offer);
-//        modelAndView.setViewName("editOffer");
-//
-//        System.out.println("~Mat: offer:" + offer().toString());
-//        System.out.println("~Mat: Newoffer:" + newOffer.toString());
-//        return modelAndView;
-//    }
-//    @RequestMapping(value = "/api/Users/{id}", method = RequestMethod.PUT)
-//    public Offer putOffer(@PathVariable int id, @RequestBody Offer newOffer) {
-//        return offerRepository.findById(id)
-//
-//    }
     @RequestMapping(value = "/home/editoffer/{id}", method = RequestMethod.POST)
     public ModelAndView putOffer(@PathVariable(value = "id") int id, @Valid @ModelAttribute Offer offer) {
-//        return offerRepository.findById(id)
-//                .map(offerDetails -> {
-//
-//                })
-//                .map(user -> {
-//                    if(newUser.getName()!=null&&!newUser.getName().isEmpty())
-//                    {
-//                        user.setName(newUser.getName());
-//                    }
-//                    if(newUser.getAge()!=null&&newUser.getAge()>0)
-//                    {
-//                        user.setAge(newUser.getAge());
-//                    }
-//                    return repo.save(user);
-//                })
-//                .orElseGet(() -> {
-//                    newUser.setUser_id(id);
-//                    return repo.save(newUser);
-//                });
+
         System.out.println("Mat: "+offer.toString());
         ModelAndView modelAndView = new ModelAndView();
         Offer offer1 = offerRepository.findAllById(id);
@@ -224,25 +152,12 @@ public class OffersController {
     }
 
 //    FIXME
-    @RequestMapping("/home/delete/{id}")
+    @RequestMapping(value = "/home/delete/{id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable(name = "id") int id) {
         offerService.deleteOffer(id);
         return "offers";
     }
 
-//    Podmianę obiektów zrób!!!
-//    @RequestMapping(value = "/home/edit/{id}", method = RequestMethod.PUT)
-//    public ModelAndView saveProduct(@Valid@ModelAttribute("offer") Offer offer, @PathVariable int id) {
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        System.out.println("~Mat: ID: " + id + "  Offer: " + offer.toString());
-//        offer.setId(id);
-//        offerService.newOffer(offer);
-//        modelAndView.addObject(offer);
-//        modelAndView.setViewName("editOffer");
-//
-//        return modelAndView;
-//    }
 
 
 
@@ -253,68 +168,4 @@ public class OffersController {
         offerService.deleteOffer(id);
     }
 
-//    @PutMapping("/employees/{id}")
-//    Offer updateOffer(@RequestBody Offer newOffer, @PathVariable int id) {
-//
-//        return offerRepository.findAllById(id).map
-//
-//
-////                map(employee -> {
-////            employee.setFirstName(newEmployee.getFirstName());
-////            employee.setLastName(newEmployee.getLastName());
-////            employee.setEmail(newEmployee.getEmail());
-////            return repository.save(employee);employee
-//        }).orElseGet(() -> {
-//            newEmployee.setId(id);
-//            return repository.save(newEmployee);
-//        });
-//    }
-
-//    @PutMapping("/students/{id}")
-//    public ResponseEntity<Object> updateStudent(@RequestBody Student student, @PathVariable long id) {
-//        Optional<Student> studentOptional = studentRepository.findById(id);
-//        if (!studentOptional.isPresent())
-//            return ResponseEntity.notFound().build();
-//        student.setId(id);
-//        studentRepository.save(student);
-//        return ResponseEntity.noContent().build();
-//    }
-//    @RequestMapping(value = "admin/offers/delete", method = RequestMethod.GET)
-//    public ModelAndView deleteOffer() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        Offer offer = new Offer();
-//        modelAndView.addObject("offer", offer);
-//        modelAndView.setViewName("deleteForm"); // resources/template/offerForm.html
-//        return modelAndView;
-//    }
-//
-//
-//    @RequestMapping(value = "/offers/delete", method = RequestMethod.GET)
-//    public ModelAndView deleteOffer(@RequestParam int id) {
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        offerService.deleteOffer(id);
-//        modelAndView.setViewName("adminOffer"); // resources/template/offerForm.html
-//        return modelAndView;
-//    }
-//    @RequestMapping(value = "admin/offers/delete", method = RequestMethod.POST)
-//    public ModelAndView deleteOffer() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        Offer offer = new Offer();
-//        modelAndView.addObject("offer", offer);
-//        modelAndView.setViewName("deleteForm"); // resources/template/offerForm.html
-//        return modelAndView;
-//    }
-//
-//
-//
-//
-//    @RequestMapping(value = "/customers/{id}", method = RequestMethod.DELETE)
-//    public ResponseEntity<String> deleteCustomer(@PathVariable("id") int id) {
-//        System.out.println("Delete Customer with ID = " + id + "...");
-//
-//        offerService.deleteOffer(id);
-//
-//        return new ResponseEntity<>("Customer has been deleted!", HttpStatus.OK);
-//    }
 }
