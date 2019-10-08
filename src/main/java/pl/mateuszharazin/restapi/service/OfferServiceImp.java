@@ -20,9 +20,9 @@ public class OfferServiceImp implements OfferService {
         offerRepository.deleteById(id);
     }
 
-    public Offer getOffer(int id) {
-        return offerRepository.findById(id);
-    }
+//    public Offer getOffer(int id) {
+//        return offerRepository.findById(id);
+//    }
 
 //    @Override
 //    public void editOffer(Offer offer) {

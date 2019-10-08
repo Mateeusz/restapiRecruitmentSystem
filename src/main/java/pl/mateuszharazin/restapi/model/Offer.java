@@ -40,4 +40,6 @@ public class Offer {
     @Column(name = "vacant_number")
     int vacantNumber;
 
+
+
 }

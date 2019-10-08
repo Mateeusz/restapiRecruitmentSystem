@@ -11,20 +11,25 @@
 <!--        <button  type="Submit" th:text="ShowOffer"></button>-->
 <!--    </form>-->
 
+    <form th:action="@{/home/offers}" method="GET" class="form-signin">
+        <h3>Select Offers</h3>
+        <button type="Submit">Select Offers</button>
+    </form>
+
     <form th:action="@{/admin/offers/add}" method="GET" class="form-signin">
-        <h3 class="form-signin-heading" th:text="NewOffer"></h3>
-        <button type="Submit" th:text="AddNewOffer"></button>
+        <h3>NewOffer</h3>
+        <button type="Submit">Add New Offer</button>
     </form>
 
-    <form th:action="@{/admin/offers/edit}" method="GET" class="form-signin">
-        <h3 class="form-signin-heading" th:text="EditOffer"></h3>
-        <button type="Submit" th:text="AddNewOffer"></button>
+    <form th:action="@{/home/deleteoffer}" method="GET" class="form-signin">
+        <h3>EditOffer</h3>
+        <button type="Submit">Delete Offer</button>
     </form>
 
-    <form th:action="@{/admin/offers/delete}" method="GET" class="form-signin">
-        <h3 class="form-signin-heading" th:text="DeleteOffer"></h3>
-        <button type="Submit" th:text="AddNewOffer"></button>
-    </form>
+<!--    <form th:action="@{/home/deleteoffer}" method="GET" class="form-signin">-->
+<!--        <h3 class="form-signin-heading" th:text="DeleteOffer"></h3>-->
+<!--        <button type="Submit" th:text="AddNewOffer"></button>-->
+<!--    </form>-->
 
 </body>
 </html>

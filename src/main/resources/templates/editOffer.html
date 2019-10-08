@@ -1,51 +1,163 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8" />
-    <title>Edit Product</title>
-</head>
-<body>
-<div align="center">
-    <h1>Edit Product</h1>
-    <br />
-    <form action="#" th:action="@{/save}" th:object="${offer}"
-          method="post">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="utf-8" />-->
+<!--    <title>Edit Product</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div align="center">-->
+<!--    <h1>Edit Product</h1>-->
+<!--    <br />-->
 
-        <table border="0" cellpadding="10">
-            <tr>
-                <td>Product ID:</td>
-                <td>
-                    <input type="text" th:field="*{id}" readonly="readonly" />
-                </td>
-            </tr>
-            <tr>
-                <td>Product title:</td>
-                <td>
-                    <input type="text" th:field="*{title}" />
-                </td>
-            </tr>
-            <tr>
-                <td>Salary:</td>
-                <td><input type="text" th:field="*{salary}" /></td>
-            </tr>
-            <tr>
-                <td>Requirements:</td>
-                <td><input type="text" th:field="*{requirements}" /></td>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td><input type="text" th:field="*{description}" /></td>
-            </tr>
-            <tr>
-                <td>VacantNumber:</td>
-                <td><input type="text" th:field="*{vacantNumber}" /></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Save</button> </td>
-            </tr>
-        </table>
-    </form>
+<!--    <h1> PRZED: </h1><br>-->
+<!--            <tr>-->
+<!--                <td>Product ID:  </td>-->
+<!--                <td><p th:text=" ${offer.id}" /></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Product title: </td>-->
+<!--                <td><p th:text=" ${offer.title}" /></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Salary: </td>-->
+<!--                <td><p th:text=" ${offer.salary}" /></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Requirements: </td>-->
+<!--                <td><p th:text=" ${offer.requirements}" /></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Description: </td>-->
+<!--                <td><p th:text=" ${offer.description}" /></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>VacantNumber: </td>-->
+<!--                <td><p th:text=" ${offer.vacantNumber}" /></td>-->
+<!--            </tr>-->
+
+<!--    </form>-->
+<!--    <H1> PO: </H1><br>-->
+<!--    <form th:action="@{'/home/editoffer/'+${offer.id}}" th:object="${offer}" method="POST">-->
+
+<!--        <table border="0" cellpadding="10">-->
+
+<!--            <tr>-->
+<!--                <td>Product title: </td>-->
+<!--                <td>-->
+<!--                    <input type="text" th:field="*{title}" />-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Salary: </td>-->
+<!--                <td><input type="text" th:field="*{salary}" placeholder=" "></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Requirements: </td>-->
+<!--                <td><input type="text" th:field="*{requirements}" /></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Description: </td>-->
+<!--                <td><input type="text" th:field="*{description}" /></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>VacantNumber: </td>-->
+<!--                <td><input type="text" th:field="*{vacantNumber}" /></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td colspan="2"><button type="submit">UPDATE</button> </td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
+
+<!--&lt;!&ndash;    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">&ndash;&gt;-->
+<!--&lt;!&ndash;        <form autocomplete="off" action="#" th:action="@{/home/editoffer/{id}}" th:object="${offer}" method="post" class="form-signin" role="form">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h3 class="form-signin-heading">Add New Offer</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" th:field="*{title}" placeholder="Tytuł" class="form-control" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" th:field="*{salary}" placeholder="Min wynagrodzenie" class="form-control" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" th:field="*{description}" placeholder="Opis" class="form-control" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" th:field="*{requirements}" placeholder="Wymagania" class="form-control" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="text" th:field="*{vacantNumber}" placeholder="Ilość vacatów" class="form-control" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button type="submit" class="btn btn-primary btn-block">Add new offer</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash;				<span th:utext="${successMessage}"></span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="PL" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New job offer</title>
+    <!-- link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" /-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #ededed;">
+<div style="background-color: #337ab7; height: 50px;"></div>
+<div class="container-fluid" style="margin-top: 30px;">
+
+    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+        <form autocomplete="off" action="#" th:action="@{'/home/editoffer/'+${offer.id}}" th:object="${offer}" method="post" class="form-signin" role="form">
+            <h3 class="form-signin-heading">Add New Offer</h3>
+            <div class="form-group">
+                <div class="">
+                    <input type="text" th:field="*{title}" placeholder="Tytuł" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <input type="text" th:field="*{salary}" placeholder="Min wynagrodzenie" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <input type="text" th:field="*{description}" placeholder="Opis" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <input type="text" th:field="*{requirements}" placeholder="Wymagania" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <input type="text" th:field="*{vacantNumber}" placeholder="Ilość vacatów" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <button type="submit" class="btn btn-primary btn-block">EDIT offer</button>
+                </div>
+            </div>
+            <!--				<span th:utext="${successMessage}"></span>-->
+        </form>
+    </div>
 </div>
 </body>
 </html>

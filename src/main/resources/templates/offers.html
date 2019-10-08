@@ -48,9 +48,16 @@
             <td th:text="${offer.description}">Description</td>
             <td th:text="${offer.vacantNumber}">VacantNumber</td>
             <td>
-                <a href="/@{'/edit/' + ${offer.id}}">Edit</a>
+<!--                <a href="/@{'/home/edit/' + ${offer.id}}">Edit</a>-->
                 &nbsp;&nbsp;&nbsp;
-                <a href="/@{'/delete/' + ${offer.id}}">Delete</a>
+                <form th:action="@{'/home/editoffer/'+${offer.id}}" method="GET" class="form-signin">
+                    <button type="Submit" >EditOffer</button>
+                </form>
+
+                <form th:action="@{'/admin/offers/delete/'+${offer.id}}" method="DELETE" class="form-signin">
+                    <button type="Submit" th:text="DeleteOffer"></button>
+                </form>
+<!--                <a href="/@{'/home/offer/delete/' + ${offer.id}}">Delete</a>-->
             </td>
         </tr>
         </tbody>
