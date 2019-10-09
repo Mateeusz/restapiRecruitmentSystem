@@ -36,13 +36,23 @@ public class OffersController {
 //        return "index";
 //    }
 
-    @RequestMapping(value = "/home/offers", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/offers", method = RequestMethod.GET)
     public ModelAndView showOffers() {
 
         ModelAndView modelAndView = new ModelAndView();
 //        List<Offer> offerList = offerService.listOffer();
         modelAndView.addObject("offerList", offerService.listOffer());
         modelAndView.setViewName("offers");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/home/offers", method = RequestMethod.GET)
+    public ModelAndView showOffersClient() {
+
+        ModelAndView modelAndView = new ModelAndView();
+//        List<Offer> offerList = offerService.listOffer();
+        modelAndView.addObject("offerList", offerService.listOffer());
+        modelAndView.setViewName("userOffers");
         return modelAndView;
     }
 

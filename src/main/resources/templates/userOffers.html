@@ -25,7 +25,7 @@
 <h1>Offers List</h1>
 <div align="center">
     <h1>Product List</h1>
-    <a href="/admin/offers/add">Create New Product</a>
+<!--    <a href="/admin/offers/add">Create New Product</a>-->
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -50,12 +50,12 @@
             <td>
                 <!--                <a href="/@{'/home/edit/' + ${offer.id}}">Edit</a>-->
                 &nbsp;&nbsp;&nbsp;
-                <form th:action="@{'/home/editoffer/'+${offer.id}}" method="GET" class="form-signin">
-                    <button type="Submit" >EditOffer</button>
+                <form th:action="@{'/home/editoffer/'+${offer.id}}" method="POST" class="form-signin">
+                    <button type="Submit" >Applay</button>
                 </form>
 
-                <form th:action="@{'/home/delete/'+${offer.id}}" method="DELETE" class="form-signin">
-                    <button type="Submit" th:text="DeleteOffer"></button>
+                <form th:action="@{'/home/delete/'+${offer.id}}" method="GET" class="form-signin">
+                    <button type="Submit">More Info</button>
                 </form>
                 <!--                <a href="/@{'/home/offer/delete/' + ${offer.id}}">Delete</a>-->
             </td>
