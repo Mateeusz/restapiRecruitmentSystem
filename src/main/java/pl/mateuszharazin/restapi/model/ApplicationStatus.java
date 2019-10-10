@@ -18,10 +18,13 @@ public class ApplicationStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "application_status_type_id")
-    int id;
+    private int id;
 
     @NotNull
     @Column(name = "status_name")
-    String statusName;
+    private String statusName;
+
+    @OneToOne(mappedBy = "applicationStatus")
+    private Application application;
 
 }

@@ -28,5 +28,7 @@ public class TestType {
     @Column(name = "test_type_desc")
     String testTypeDesc;
 
+    @OneToOne(mappedBy = "testType")
+    private Application application;
 
 }

@@ -18,28 +18,29 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "job_offer_id")
-    int id;
+    private int id;
 
     @NotNull(message = "Job Offer title can not be null!")
     @Column(name = "title")
-    String title;
+    private String title;
 
     @NotNull(message = "Max salary can not be null!")
     @Column(name = "max_salary")
-    double salary;
+    private double salary;
 
     @NotNull(message = "Requirements can not be null!")
     @Column(name = "requirements")
-    String requirements;
+    private String requirements;
 
     @NotNull(message = "Description can not be null!")
     @Column(name = "description")
-    String description;
+    private String description;
 
     @NotNull(message = "Vacant number can not be null!")
     @Column(name = "vacant_number")
-    int vacantNumber;
+    private int vacantNumber;
 
-
+    @OneToOne(mappedBy = "offer")
+    private Application application;
 
 }
