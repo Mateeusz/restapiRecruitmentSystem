@@ -40,7 +40,7 @@ public class Offer {
     @Column(name = "vacant_number")
     private int vacantNumber;
 
-    @OneToOne(mappedBy = "offer")
-    private Application application;
+//    @OneToOne(mappedBy = "offer")
+//    private Application application;
 
 }
