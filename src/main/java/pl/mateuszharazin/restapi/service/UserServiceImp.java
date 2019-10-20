@@ -31,6 +31,8 @@ public class UserServiceImp implements UserService {
         user.setPhoneNumber("123567098");
         Role userRole = roleRepository.findByRoleName("SITE_USER");
 
+//        TODO: user phone number added to User model and get it from a HTML input
+
         System.out.println("TUTAJ: ->> " + user.toString());
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 //        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Welcome Page</title>
+</head>
+<body>
+<h1>Hello Admin!</h1>
+<!--    <form th:action="@{/home/offers}" method="GET" class="form-signin">-->
+<!--        <h3 class="form-signin-heading" th:text="Existing offers"></h3>-->
+<!--        <button  type="Submit" th:text="ShowOffer"></button>-->
+<!--    </form>-->
+
+    <form th:action="@{/home/offers}" method="GET" class="form-signin">
+        <h3>Select Offers</h3>
+        <button type="Submit">Select Offers</button>
+    </form>
+
+    <form th:action="@{/admin/offers/add}" method="GET" class="form-signin">
+        <h3>NewOffer</h3>
+        <button type="Submit">Add New Offer</button>
+    </form>
+
+    <form th:action="@{/home/deleteoffer}" method="GET" class="form-signin">
+        <h3>EditOffer</h3>
+        <button type="Submit">Delete Offer</button>
+    </form>
+
+<!--    <form th:action="@{/home/deleteoffer}" method="GET" class="form-signin">-->
+<!--        <h3 class="form-signin-heading" th:text="DeleteOffer"></h3>-->
+<!--        <button type="Submit" th:text="AddNewOffer"></button>-->
+<!--    </form>-->
+
+</body>
+</html>

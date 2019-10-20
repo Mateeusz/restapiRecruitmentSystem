@@ -1,0 +1,269 @@
+
+body
+{
+    background-image: url("../Images/brushed.png");
+    color: white;
+    font-family: 'Lato', sans-serif;
+
+    font-size: 20px;
+}
+
+.header
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    /*background-image: url("Images/brushed.png");*/
+}
+.title
+{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 70px;
+    color: 	#6495ed;
+    width: 1000px;
+    height: 60px;
+    background-image: url("../Images/brushed.png");
+    text-align: center;
+    text-shadow: 2px 2px #696969;
+    background-color: #003366;
+
+    /* padding: 10px;
+    padding-top: 20px; */
+    min-height: 30px;
+    border-bottom: dimgrey;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-style: solid;
+}
+.motto
+{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    width: 1000px;
+    color:	#696969;
+    background-image: url("../Images/brushed.png");
+    text-align: center;
+    height: 40px;
+    margin-top: 0px;
+}
+
+#mainContainor
+{
+    width: 1000px;
+    height: 520px;
+    background-color: #D3D3D3;
+    margin: auto;
+    border: #D3D3D3;
+    border-radius: 20px;
+
+}
+
+#left
+{
+    float: left;
+    width: 640px;
+    height: 490px;
+    margin: 15px 0px 15px 15px ;
+    background-image: url("../Images/photo900x600.jpg");
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+
+#right
+{
+    float: left;
+    width: 320px;
+    height: 490px;
+    margin: 15px 0px 15px 0px ;
+
+    background-color: #003366;
+    border-color: #003366;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    font-size: xx-large;
+    border-left-width: medium;
+    border-left-color: #003366;
+    border-left-style: solid;
+}
+.rightChild
+{
+    margin-top: 20px;
+    padding-left: 30px;
+
+}
+#registry
+{
+    display: none;
+}
+.loginLabel
+{
+    width: 200px;
+    height: 25px;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: medium;
+    text-align: center;
+    border-radius: 10px;
+}
+.labelDescription
+{
+    margin-top: 5px;
+    margin-left: 20px;
+    font-size: small;
+    color: #003366;
+    text-shadow: #003366 0em 0em 0em;
+}
+.registryLabel
+{
+    width: 200px;
+    height: 20px;
+    font-size: medium;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+.button
+{
+    margin-top: 30px;
+    width: 207px;
+    height: 35px;
+    font-size: x-large;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 20px;
+    background-color: cornflowerblue;
+    color: white;
+    text-shadow: #003366 0.1em 0.1em 0.2em;
+}
+
+.button:hover
+{
+    background-color: #D3D3D3;
+    cursor: pointer;
+}
+
+
+.buttonReg
+{
+    margin-top: 30px;
+    width: 207px;
+    height: 35px;
+    font-size: large;
+    text-decoration-color: #003366;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    text-align: center;
+    border-radius: 10px;
+    /*margin-left: 20px;*/
+    background-color: #003366;
+    /*background-image: url("Images/brushed.png");*/
+}
+
+.buttonReg:hover
+{
+    background-color: #004080;
+    cursor: pointer;
+}
+
+.divRe
+{
+    background-color: #D3D3D3;
+    border-color: #AAABB8;
+    border-style: solid;
+    border-radius: 20px;
+    width: 250px;
+    height: 100px;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    font-size: x-large;
+    text-align: center;
+    padding-top: 20px;
+}
+
+#divRegistry
+{
+    margin-top: 123px;
+}
+
+#divLogin
+{
+    margin-top: 30px;
+}
+#footer
+{
+    width: 1000px;
+    background-color: #003366;
+    min-height: 100px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+#foot
+{
+    font-size: small;
+    float: left;
+    width: 610px;
+    background-color: #003366;
+    color: white;
+    padding: 5px;
+    min-height: 80px;
+    margin: 5px;
+}
+
+.yt
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+.yt:hover
+{
+    background-color: #004080;
+}
+.fb
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+.fb:hover
+{
+    background-color: #004080;
+}
+.tw
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+.tw:hover
+{
+    background-color: #004080;
+}
+.gp
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+.gp:hover
+{
+    background-color: #004080;
+}
+a.ytlink
+{
+    color: #ffffff;
+    text-decoration: none;
+
+}
