@@ -3,6 +3,7 @@ package pl.mateuszharazin.restapi.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.checkerframework.common.aliasing.qual.Unique;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,6 +23,7 @@ public class TestType {
     private int id;
 
     @NotNull
+    @Unique
     @Column(name = "test_type_name")
     private String testTypeName;
 

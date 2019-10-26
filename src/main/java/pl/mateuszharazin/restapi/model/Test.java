@@ -45,5 +45,4 @@ public class Test {
         this.testType = testType;
     }
 
-
 }

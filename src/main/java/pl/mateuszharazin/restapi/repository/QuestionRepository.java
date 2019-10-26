@@ -4,14 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pl.mateuszharazin.restapi.model.Question;
-import pl.mateuszharazin.restapi.model.Test;
 
 import java.util.List;
 
-public interface TestRepository extends JpaRepository<Test, Integer> {
+public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
-//    public Test findAllById(int id);
-
-
-
+//    @Query("SELECT question FROM question INNER JOIN question_test qt on question.question_id = qt.question_id WHERE test_id = :id")
+//    public Question findAllById(int id);
 }
