@@ -29,13 +29,6 @@ public class OffersController {
         this.offerRepository = offerRepository;
     }
 
-//    public String viewHomePage(Model model) {
-//        List<Product> listProducts = service.listAll();
-//        model.addAttribute("listProducts", listProducts);
-//
-//        return "index";
-//    }
-
     @RequestMapping(value = "/admin/offers", method = RequestMethod.GET)
     public ModelAndView showOffers() {
 
@@ -66,8 +59,6 @@ public class OffersController {
     @RequestMapping(value = "/home/getoffer", method = RequestMethod.POST)
     public ModelAndView getOfferById(@ModelAttribute Offer offer) {
 
-        System.out.println("~Mat: HELLO! --> "+offer.getId());
-//        int id = offer.getId();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject(offerRepository.findAllById(offer.getId()));
         modelAndView.setViewName("offerGet");
@@ -153,6 +144,7 @@ public class OffersController {
         offer1.setDescription(offer.getDescription());
         offer1.setRequirements(offer.getRequirements());
         offer1.setVacantNumber(offer.getVacantNumber());
+        offer1.setEndDate(offer.getEndDate());
 
         modelAndView.addObject("offer", offer);
         offerService.newOffer(offer1);
@@ -161,15 +153,11 @@ public class OffersController {
         return modelAndView;
     }
 
-//    FIXME
     @RequestMapping(value = "/home/delete/{id}", method = RequestMethod.DELETE)
     public String deleteProduct(@PathVariable(name = "id") int id) {
         offerService.deleteOffer(id);
         return "offers";
     }
-
-
-
 
     @RequestMapping(value = "/home/offer/delete/{id}", method = RequestMethod.DELETE)
     void deleteEmployee(@PathVariable int id) {

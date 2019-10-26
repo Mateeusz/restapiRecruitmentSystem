@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h1>TestType List</h1>
+    <a href="/admin/test/addType">Create New TestType</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>testTypeName</th>
+            <th>testTypeDesc</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="testType : ${testTypeList}">
+            <td th:text="${testType.id}">ID</td>
+            <td th:text="${testType.testTypeName}">testTypeName</td>
+            <td th:text="${testType.testTypeDesc}">testTypeDesc</td>
+            <td>
+                <button type="submit" class="btn btn-primary btn-block">Pokaż testy tego typu</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

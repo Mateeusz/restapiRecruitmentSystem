@@ -40,6 +40,11 @@ public class Offer {
     @Column(name = "vacant_number")
     private int vacantNumber;
 
+    @NotNull
+    @Column(name = "end_date")
+    private java.sql.Date endDate;
+
+
     @OneToOne(mappedBy = "offer")
     private Application application;
 

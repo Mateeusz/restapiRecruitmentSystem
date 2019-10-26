@@ -22,9 +22,8 @@
 <!--</form>-->
 
 
-<h1>Offers List</h1>
 <div align="center">
-    <h1>Product List</h1>
+    <h1>Offers List</h1>
     <a href="/admin/offers/add">Create New Product</a>
     <br/><br/>
     <table border="1" cellpadding="10">
@@ -36,6 +35,7 @@
             <th>Requirements</th>
             <th>Description</th>
             <th>VacantNumber</th>
+            <th>End Date</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -47,6 +47,7 @@
             <td th:text="${offer.requirements}">Requirements</td>
             <td th:text="${offer.description}">Description</td>
             <td th:text="${offer.vacantNumber}">VacantNumber</td>
+            <td th:text="${offer.endDate}">EndDate</td>
             <td>
 <!--                <a href="/@{'/home/edit/' + ${offer.id}}">Edit</a>-->
                 &nbsp;&nbsp;&nbsp;
