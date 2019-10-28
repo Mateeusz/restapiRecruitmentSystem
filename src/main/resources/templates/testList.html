@@ -25,7 +25,9 @@
             <td th:text="${test.name}">Name</td>
             <td th:text="${test.testType.testTypeName}">TestTypeName</td>
             <td>
-                <button type="submit" class="btn btn-primary btn-block">See more</button>
+                <form th:action="@{'/admin/test/get/'+${test.id}}" method="GET" class="form-signin">
+                    <button type="Submit" > Details </button>
+                </form>
             </td>
         </tr>
         </tbody>

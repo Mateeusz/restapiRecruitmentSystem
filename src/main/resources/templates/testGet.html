@@ -4,10 +4,59 @@
 <head>
     <meta charset="utf-8"/>
     <title>Test </title>
+<!--    <link rel="stylesheet" href="Stylesheets/stylesheetWelcome.css">-->
+    <link rel="stylesheet" th:href="@{/Users/mateusz/Documents/GitHub/restapiRecruitmentSystem/src/main/resources/templates/Stylesheets/stylesheetWelcome.css}"/>
+    <script>
+
+
+    </script>
+
 </head>
 <body>
-
+            <form th:action="@{'/admin/test/list'}" method="GET" class="form-signin">
+<button type="Submit" th:text="DeleteOffer"></button>
+            </form>
 <p th:text="'test: ' + ${test.get().name} " />
 
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Salary</th>
+        <th>Requirements</th>
+        <th>Description</th>
+        <th>VacantNumber</th>
+        <th>End Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question : ${questions}">
+        <td th:text="${question.getId()}">ID</td>
+        <td th:text="${question.getQuestionBody()}">Body</td>
+        <td th:text="${question.getOption1()}">Option 1</td>
+        <td th:text="${question.getOption2()}">Option 2</td>
+        <td th:text="${question.getOption3()}">Option 3</td>
+        <td th:text="${question.getOption4()}">Option 4</td>
+        <td th:text="${question.getAnswer()}">Answer</td>
+        <td>
+            &nbsp;&nbsp;&nbsp;
+            <form th:action="@{'/admin/test/question/edit/'+${question.id}}" method="GET" class="form-signin">
+                <button type="Submit" >Edit </button>
+            </form>
+
+            <form th:action="@{'/admin/test/question/delete/'+${question.id}}" method="DELETE" class="form-signin">
+                <button type="Submit" th:text="Delete"></button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+
+
+</div>
 </body>
 </html>

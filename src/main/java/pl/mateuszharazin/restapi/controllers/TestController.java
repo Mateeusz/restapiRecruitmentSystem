@@ -83,6 +83,7 @@ public class TestController {
     public ModelAndView getTestById(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("test", testRepository.findById(id));
+        modelAndView.addObject("questions", questionRepository.findAllByTests(id));
         modelAndView.setViewName("testGet");
         return modelAndView;
     }

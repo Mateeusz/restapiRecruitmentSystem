@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -41,5 +42,9 @@ public class Question {
     @Column(name = "option4")
     @NotNull
     String option4;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "question_test", joinColumns = @JoinColumn(name = "test_id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
+    private Set<Test> tests;
 
 }

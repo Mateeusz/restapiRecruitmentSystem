@@ -1,7 +1,7 @@
 
 body
 {
-    background-image: url("../Images/brushed.png");
+    background-image: url("../img/brushed.png");
     color: white;
     font-family: 'Lato', sans-serif;
 
@@ -24,7 +24,7 @@ body
     color: 	#6495ed;
     width: 1000px;
     height: 60px;
-    background-image: url("../Images/brushed.png");
+    background-image: url("../img/brushed.png");
     text-align: center;
     text-shadow: 2px 2px #696969;
     background-color: #003366;
@@ -44,7 +44,7 @@ body
     font-size: 20px;
     width: 1000px;
     color:	#696969;
-    background-image: url("../Images/brushed.png");
+    background-image: url("../img/brushed.png");
     text-align: center;
     height: 40px;
     margin-top: 0px;
@@ -67,7 +67,7 @@ body
     width: 640px;
     height: 490px;
     margin: 15px 0px 15px 15px ;
-    background-image: url("../Images/photo900x600.jpg");
+    background-image: url("../img/photo900x600.jpg");
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 
