@@ -56,6 +56,29 @@ public class TestController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/admin/test/{id}/addQuestion", method = RequestMethod.GET)
+    public ModelAndView editTest(@PathVariable("id") int id) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("questionsIn", questionRepository.findAllByTests(id));
+        modelAndView.addObject("allQuestions", questionRepository.findAll());
+        modelAndView.addObject("test", testRepository.findById(id));
+
+        modelAndView.setViewName("testAddQuestion");
+        return modelAndView;
+    }
+
+//    FIXME: insertQuestion not work as should 
+    @RequestMapping(value = "/admin/test/{id}/addQuestion", method = RequestMethod.POST)
+    public ModelAndView addQuestion(@PathVariable("id") int id, @ModelAttribute Question question) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        testRepository.insertQuestion(question.getId(), id);
+
+        modelAndView.setViewName("testAddQuestion");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/admin/test/list", method = RequestMethod.GET)
     public ModelAndView listTests() {
 

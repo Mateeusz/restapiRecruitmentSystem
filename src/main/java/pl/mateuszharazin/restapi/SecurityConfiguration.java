@@ -18,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 @Configuration
 @EnableWebSecurity
-@EnableWebMvc
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired

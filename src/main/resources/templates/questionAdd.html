@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="PL" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="PL" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>New job offer</title>
-    <!-- link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" /-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Add new Question</title>
 </head>
+<body>
 <body style="background-color: #ededed;">
 <div style="background-color: #337ab7; height: 50px;"></div>
 <div class="container-fluid" style="margin-top: 30px;">
-    <form th:action="@{'/admin/test/list'}" method="GET" class="form-signin">
+    <form th:action="@{'/admin/test/question/list'}" method="GET" class="form-signin">
         <button type="Submit" > Back </button>
     </form>
     <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
-        <form autocomplete="off" action="#" th:action="@{'/admin/test/question/edit/'+${question.id}}" th:object="${question}" method="post" class="form-signin" role="form">
+        <form autocomplete="off" action="#" th:action="@{'/admin/test/question/add'}" th:object="${question}" method="post" class="form-signin" role="form">
             <h3 class="form-signin-heading">Add New Offer</h3>
             <div class="form-group">
                 <div class="">
@@ -23,37 +21,38 @@
             </div>
             <div class="form-group">
                 <div class="">
-                    <input type="text" th:field="*{option1}" placeholder="Min wynagrodzenie" class="form-control" />
+                    <input type="text" th:field="*{option1}" placeholder="Option 1 " class="form-control" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="">
-                    <input type="text" th:field="*{option2}" placeholder="Opis" class="form-control" />
+                    <input type="text" th:field="*{option2}" placeholder="Option 2 " class="form-control" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="">
-                    <input type="text" th:field="*{option3}" placeholder="Wymagania" class="form-control" />
+                    <input type="text" th:field="*{option3}" placeholder="Option 3 " class="form-control" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="">
-                    <input type="text" th:field="*{option4}" placeholder="Ilość vacatów" class="form-control" />
+                    <input type="text" th:field="*{option4}" placeholder="Option 4  " class="form-control" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="">
-                    <input type="text" th:field="*{answer}" placeholder="Data zakończenia 'rrrr-mm-dd'" class="form-control" />
+                    <input type="text" th:field="*{answer}" placeholder="Answer" class="form-control" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="">
-                    <button type="submit" class="btn btn-primary btn-block">EDIT question</button>
+                    <button type="submit" class="btn btn-primary btn-block">ADD question</button>
                 </div>
             </div>
             <span th:utext="${successMessage}"></span>
         </form>
     </div>
 </div>
+</body>
 </body>
 </html>

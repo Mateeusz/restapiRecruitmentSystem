@@ -14,8 +14,14 @@
 </head>
 <body>
             <form th:action="@{'/admin/test/list'}" method="GET" class="form-signin">
-<button type="Submit" th:text="DeleteOffer"></button>
+            <button type="Submit" >Back</button>
             </form>
+
+            <form th:action="@{'/admin/test/'+${test.get().id}+'/addQuestion'}" method="GET" class="form-signin">
+                <button type="Submit" >Add Question</button>
+            </form>
+
+
 <p th:text="'test: ' + ${test.get().name} " />
 
 <table border="1" cellpadding="10">

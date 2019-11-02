@@ -12,6 +12,8 @@ public interface TestRepository extends JpaRepository<Test, Integer> {
 
 //    public Test findAllById(int id);
 
+      @Query(value = "INSERT INTO question_test (question_id, test_id) VALUES (?, ?)", nativeQuery = true)
+      public void insertQuestion(@Param("question_id") int questionId, @Param("test_id") int testId);
 
 
 }

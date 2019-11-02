@@ -11,14 +11,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import pl.mateuszharazin.restapi.model.TestType;
 import pl.mateuszharazin.restapi.repository.TestTypeRepository;
+import pl.mateuszharazin.restapi.service.TestTypeService;
 
 import javax.validation.Valid;
 
 @Controller
 public class TestTypeController {
 
+    @Autowired
+    TestTypeService testTypeService;
 @Autowired
-private TestTypeRepository testTypeRepository;
+TestTypeRepository testTypeRepository;
+
 
     @RequestMapping(value = "/admin/test/addType", method = RequestMethod.GET)
     public ModelAndView testType() {
@@ -36,6 +40,9 @@ public ModelAndView addTestType(@Valid @ModelAttribute TestType testType, Bindin
     if(bindingResult.hasErrors()) {
         modelAndView.addObject("successMessage", "Please correct the errors in form!");
         modelMap.addAttribute("bindingResult", bindingResult);
+    }
+    else if(testTypeService.isTestTypeAlreadyExist(testType)){
+        modelAndView.addObject("successMessage", "testType with that name already exists!");
     }
     else {
         testTypeRepository.save(testType);

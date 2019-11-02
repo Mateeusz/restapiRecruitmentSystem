@@ -10,7 +10,9 @@
 <body style="background-color: #ededed;">
 <div style="background-color: #337ab7; height: 50px;"></div>
 <div class="container-fluid" style="margin-top: 30px;">
-
+    <form th:action="@{'/admin/test/list'}" method="GET" class="form-signin">
+        <button type="Submit" > Back </button>
+    </form>
     <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
         <form autocomplete="off" action="#" th:action="@{'/admin/test/question/edit/'+${question.id}}" th:object="${question}" method="post" class="form-signin" role="form">
             <h3 class="form-signin-heading">Add New Offer</h3>
@@ -49,7 +51,7 @@
                     <button type="submit" class="btn btn-primary btn-block">EDIT question</button>
                 </div>
             </div>
-            <!--				<span th:utext="${successMessage}"></span>-->
+            <span th:utext="${successMessage}"></span>
         </form>
     </div>
 </div>

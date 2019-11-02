@@ -9,9 +9,16 @@
 <div style="background-color: #337ab7; height: 50px;"></div>
 <div class="container-fluid" style="margin-top: 30px;">
 
+    <form th:action="@{'/admin/test/addType'}" method="GET" class="form-signin">
+        <button type="Submit">Dodaj nowy typ testu</button>
+    </form>
+
     <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
         <form autocomplete="off" action="#" th:action="@{/admin/test/create}" th:object="${test}" method="post" class="form-signin" role="form">
-            <h3 class="form-signin-heading">Add New Offer</h3>
+            <h3 class="form-signin-heading">Add New TEST</h3>
+
+
+
             <div class="form-group">
                 <div class="">
                     <input type="text" th:field="*{name}" placeholder="Tytuł" class="form-control" />
@@ -38,7 +45,7 @@
             <div class="form-group">
                 <div class="">
 
-                    <button type="submit" class="btn btn-primary btn-block">Add new offer</button>
+                    <button type="submit" class="btn btn-primary btn-block">Add new test</button>
                 </div>
             </div>
 <!--            <span th:utext="${successMessage}"></span>-->
