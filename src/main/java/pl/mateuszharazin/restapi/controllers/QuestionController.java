@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import pl.mateuszharazin.restapi.model.Offer;
 import pl.mateuszharazin.restapi.model.Question;
 import pl.mateuszharazin.restapi.repository.QuestionRepository;
 import pl.mateuszharazin.restapi.service.QuestionService;

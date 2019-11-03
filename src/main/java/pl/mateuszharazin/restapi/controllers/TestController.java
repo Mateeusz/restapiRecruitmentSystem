@@ -60,20 +60,28 @@ public class TestController {
     public ModelAndView editTest(@PathVariable("id") int id) {
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("questionsIn", questionRepository.findAllByTests(id));
-        modelAndView.addObject("allQuestions", questionRepository.findAll());
-        modelAndView.addObject("test", testRepository.findById(id));
+        List<Question> questionsIn = questionRepository.findAllByTests(id);
+        List<Question> allQuestions = questionRepository.findAll();
+        Test test = testRepository.findAllById(id);
+
+        modelAndView.addObject("questionsIn", questionsIn);
+        modelAndView.addObject("allQuestions", allQuestions);
+        modelAndView.addObject("test", test);
 
         modelAndView.setViewName("testAddQuestion");
         return modelAndView;
     }
 
-//    FIXME: insertQuestion not work as should 
+//    FIXME: insertQuestion not work as should. Dodaje pytanie do testu ale rzuca błędem plus
+//    FIXME: check also testRepo to fix SQL Query there's some mistakes ALSO DELETE MODEL
+//    FIXME: HOW TO USE BETWEEN TABLE ??? 
+    
     @RequestMapping(value = "/admin/test/{id}/addQuestion", method = RequestMethod.POST)
     public ModelAndView addQuestion(@PathVariable("id") int id, @ModelAttribute Question question) {
 
         ModelAndView modelAndView = new ModelAndView();
-        testRepository.insertQuestion(question.getId(), id);
+        System.out.println(question.getId() + "  i  " + id);
+        testRepository.insertQuestion(question.getId(), 11);
 
         modelAndView.setViewName("testAddQuestion");
         return modelAndView;
@@ -110,4 +118,19 @@ public class TestController {
         modelAndView.setViewName("testGet");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/admin/test/get/{id}", method = RequestMethod.DELETE)
+    public ModelAndView deleteQuestionFromTest(@PathVariable("id") int testId, @ModelAttribute Question question) {
+
+            ModelAndView modelAndView = new ModelAndView();
+            System.out.println("test id: " + testId + "  question id: " + question.getId());
+            int questionId = question.getId();
+            deleteQuestionFromTest(questionId, testId);
+
+            modelAndView.setViewName("testGet");
+
+            return modelAndView;
+    }
+
+
 }

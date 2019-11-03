@@ -52,9 +52,10 @@
                 <button type="Submit" >Edit </button>
             </form>
 
-            <form th:action="@{'/admin/test/question/delete/'+${question.id}}" method="DELETE" class="form-signin">
-                <button type="Submit" th:text="Delete"></button>
+            <form th:action="@{'/admin/test/get/'+${test.get().id}+'/delete/'+${question.getId()}}" method="DELETE" class="form-signin">
+                <button type="Submit" >DELETE</button>
             </form>
+
         </td>
     </tr>
     </tbody>
