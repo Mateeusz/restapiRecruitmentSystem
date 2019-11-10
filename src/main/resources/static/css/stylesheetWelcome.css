@@ -95,7 +95,12 @@ body
 {
     margin-top: 20px;
     padding-left: 30px;
+    height: 300px;
 
+}
+#registryButton
+{
+    margin-top: 20px;
 }
 #registry
 {
@@ -130,7 +135,7 @@ body
 }
 .button
 {
-    margin-top: 30px;
+    /*margin-top: 30px;*/
     width: 207px;
     height: 35px;
     font-size: x-large;
@@ -178,12 +183,12 @@ body
     border-style: solid;
     border-radius: 20px;
     width: 250px;
-    height: 100px;
+    /*height: 100px;*/
     color: white;
     text-shadow: black 0.1em 0.1em 0.2em;
     font-size: x-large;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 #divRegistry
@@ -267,3 +272,68 @@ a.ytlink
     text-decoration: none;
 
 }
+
+
+
+/*.singleOffer*/
+/*{*/
+/*    width: 998px;*/
+/*    height: 80px;*/
+/*    background-color: #AAABB8;*/
+/*    font-size: 40px;*/
+/*    font-family: 'Josefin Sans', sans-serif;*/
+/*    margin-top: 20px;*/
+/*    border-color: #D3D3D3;*/
+/*    border-style: solid;*/
+/*    border-width: 1px;*/
+/*    text-shadow: 1px 1px #696969;*/
+
+
+/*}*/
+
+/*.singleOffer:hover*/
+/*{*/
+/*    background-color: #D3D3D4;*/
+/*    text-shadow: 3px 2px #696969;*/
+/*}*/
+
+/*.offerButton*/
+/*{*/
+/*    width: 150px;*/
+/*    height: 40px;*/
+/*    border-radius: 10px;*/
+/*    background-color: #003366;*/
+/*    border-color: #003366;*/
+/*    font-size: large;*/
+/*    font-family: 'Josefin Sans';*/
+/*    color: #D3D3D3;*/
+/*    padding-bottom: 5px;*/
+/*    padding-top: 5px;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*.offerButton:hover*/
+/*{*/
+/*    color: white;*/
+/*    background-color: #004080;*/
+/*    text-shadow: 1px 1px #696969;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.leftOffer*/
+/*{*/
+
+/*    float: left;*/
+/*    width: 740px;*/
+/*    margin: auto;*/
+/*    margin-top: 20px;*/
+/*    margin-left: 20px;*/
+/*}*/
+
+/*.rightOffer*/
+/*{*/
+/*    width: 160px;*/
+/*    float: left;*/
+/*    margin-top: 10px;*/
+/*    padding-left: 50px;*/
+/*}*/

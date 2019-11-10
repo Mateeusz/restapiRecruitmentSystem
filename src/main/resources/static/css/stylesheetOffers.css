@@ -1,0 +1,136 @@
+.singleOffer
+{
+    width: 998px;
+    height: 80px;
+    background-color: #AAABB8;
+    font-size: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 20px;
+    border-color: #D3D3D3;
+    border-style: solid;
+    border-width: 1px;
+    text-shadow: 1px 1px #696969;
+
+
+}
+
+.singleOffer:hover
+{
+    background-color: #D3D3D4;
+    text-shadow: 3px 2px #696969;
+}
+
+.offerButton
+{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #003366;
+    border-color: #003366;
+    font-size: large;
+    font-family: 'Josefin Sans';
+    color: #D3D3D3;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-top: 10px;
+}
+
+.offerButton:hover
+{
+    color: white;
+    background-color: #004080;
+    text-shadow: 1px 1px #696969;
+    cursor: pointer;
+}
+
+.leftOffer
+{
+
+    float: left;
+    width: 740px;
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.rightOffer
+{
+    width: 160px;
+    float: left;
+    margin-top: 10px;
+    padding-left: 50px;
+}
+
+.offerTitle
+{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 70px;
+    color: 	#ffffff;
+    width: 900px;
+    height: 80px;
+    background-image: url("../img/brushed.png");
+    text-align: center;
+    text-shadow: 3px 3px #696969;
+
+    /* padding: 10px;*/
+    margin-top: 10px;
+    padding-top: 15px;
+    min-height: 30px;
+    margin-left: 45px;
+    border-bottom: dimgrey;
+    border-top: dimgrey;
+    border-right: dimgrey;
+    border-left: dimgrey;
+    border-style: solid;
+    border-radius: 90px;
+    border-width: 1px;
+}
+.offerDate
+{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    width: 800px;
+    color:	#696969;
+    background-image: url("../img/brushed.png");
+    text-align: left;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 120px;
+}
+
+.offerHeader
+{
+    margin-top: 10px;
+    margin-left: 90px;
+    padding-top: 5px;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    background-color: #003366;
+    border-radius: 20px;
+    font-size: 26px;
+
+}
+
+
+.applayButton
+{
+    margin-top: 10px;
+    margin-left: 350px;
+    padding-top: 5px;
+    height: 50px;
+    width: 300px;
+    text-align: center;
+    background-color: #003366;
+    border-radius: 20px;
+    font-size: 26px;
+    color: #ffffff;
+
+}
+
+.applayButton:hover
+{
+    background-color: #004080;
+    text-shadow: 3px 2px #696969;
+    cursor: pointer;
+}

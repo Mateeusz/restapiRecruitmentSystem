@@ -8,6 +8,7 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -30,16 +31,26 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         }
         RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
         redirectStrategy.sendRedirect(request, response, targetUrl);
+        System.out.println("-------------------------");
+        System.out.println(authentication.getName());
+        System.out.println(response.toString());
+        System.out.println(request.toString());
+        System.out.println("-------------------------");
+
+        Cookie cookie = new Cookie("email", authentication.getName().toString());
+        response.addCookie(cookie);
     }
 
     protected String determineTargetUrl(Authentication authentication) {
         String url = "/login?error=true";
 
         // Fetch the roles from Authentication object
+
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         List<String> roles = new ArrayList<String>();
         for (GrantedAuthority a : authorities) {
             roles.add(a.getAuthority());
+            System.out.println("-->>>>  " + a.getAuthority());
         }
 
         // check user role and decide the redirect URL

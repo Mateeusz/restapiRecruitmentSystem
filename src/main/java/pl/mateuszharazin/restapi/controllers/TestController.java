@@ -119,18 +119,18 @@ public class TestController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/test/get/{id}", method = RequestMethod.DELETE)
-    public ModelAndView deleteQuestionFromTest(@PathVariable("id") int testId, @ModelAttribute Question question) {
-
-            ModelAndView modelAndView = new ModelAndView();
-            System.out.println("test id: " + testId + "  question id: " + question.getId());
-            int questionId = question.getId();
-            deleteQuestionFromTest(questionId, testId);
-
-            modelAndView.setViewName("testGet");
-
-            return modelAndView;
-    }
+//    @RequestMapping(value = "/admin/test/get/{id}", method = RequestMethod.DELETE)
+//    public ModelAndView deleteQuestionFromTest(@PathVariable("id") int testId, @ModelAttribute Question question) {
+//
+//            ModelAndView modelAndView = new ModelAndView();
+//            System.out.println("test id: " + testId + "  question id: " + question.getId());
+//            int questionId = question.getId();
+//            deleteQuestionFromTest(questionId, testId);
+//
+//            modelAndView.setViewName("testGet");
+//
+//            return modelAndView;
+//    }
 
 
 }

@@ -1,48 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="PL">
 <head>
     <meta charset="UTF-8">
-    <title>Create new test</title>
+    <title>Rekrutacja</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetAdmin.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
 </head>
-<body style="background-color: #AAABB8">
-<h1>Create new test</h1>
-<div style="background-color: coral">
-    <p>Nazwa testu: </p>
-    <input type="text" placeholder="nazwa"> <br>
+<body>
 
-    <button>Dodaj pytanie</button>
-    <button>Utwórz test</button>
+<div class = "container">
 
-    <div style="background-color: aquamarine; min-width: 500px; min-height: 100px">
-        <p>Dodaj pytanie: </p>
-<!--        ADD CSS: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch -->
-        <p>Jedna poprawna odpowiedź TAK/NIE </p>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-        </label>
-        <p>treść pytania: </p>
-        <input type="text" placeholder="treść"> <br>
-        <p>odpowiedź 1: </p>
-        <input type="text" placeholder="odpowiedź 1"> <input type="checkbox"> <br>
-        <p>odpowiedź 2: </p>
-        <input type="text" placeholder="odpowiedź 2"> <input type="checkbox"> <br>
-        <p>odpowiedź 3: </p>
-        <input type="text" placeholder="odpowiedź 3"> <input type="checkbox"> <br>
-        <p>odpowiedź 4: </p>
-        <input type="text" placeholder="odpowiedź 4"> <input type="checkbox"> <br>
-        <button>Dodaj</button>
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
     </div>
 
-    <div style="background-color: burlywood">
-        <p>Lista dodanych pytań: </p>
+    <div class="mainContainer">
+        <div class="menu">
+
+            <ol>
+                <li><a href="/home/offers">Oferty pracy</a></li>
+                <li><a href="#">Twoje rekrutacje</a>
+                    <ul>
+                        <li><a href="#">Trwające</a></li>
+                        <li><a href="#">Zakończone</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Konto</a>
+                    <ul>
+                        <li><a href="/home/user/get">Szczegóły</a></li>
+                        <!--                        '/home/user/'+${user.id}-->
+                        <!--                            <form th:action="@{'/home/user/'+${user.id}}" method="GET" class="form-signin">-->
+                        <!--                            <button type="Submit">Szczegóły</button>-->
+                        <!--                        </form></li>-->
+                        <li><a href="#">Edycja</a></li>
+                        <li><a href="#">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <p>Nazwa testu: </p>
+            <input type="text" placeholder="nazwa"> <br>
+
+            <button>Dodaj pytanie</button>
+            <button>Utwórz test</button>
+
+            <div>
+                <p>Dodaj pytanie: </p>
+                <p>Jedna poprawna odpowiedź TAK/NIE </p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <p>treść pytania: </p>
+                <input type="text" placeholder="treść"> <br>
+                <p>odpowiedź 1: </p>
+                <input type="text" placeholder="odpowiedź 1"> <input type="checkbox"> <br>
+                <p>odpowiedź 2: </p>
+                <input type="text" placeholder="odpowiedź 2"> <input type="checkbox"> <br>
+                <p>odpowiedź 3: </p>
+                <input type="text" placeholder="odpowiedź 3"> <input type="checkbox"> <br>
+                <p>odpowiedź 4: </p>
+                <input type="text" placeholder="odpowiedź 4"> <input type="checkbox"> <br>
+                <button>Dodaj</button>
+            </div>
+
+            <div>
+                <p>Lista dodanych pytań: </p>
+
+            </div>
+        </div>
 
     </div>
+
+    <div id="footer">
+
+        <div id="foot">
+            Rekrutacja idealna! <br>
+            Wszelkie prawa zastrzeżone 2019<br/>
+            Created by Mateusz Harazin </div>
+        <a href="http://youtube.com" target="_blank" class="ytlink">
+            <div class="yt"><i class="icon-youtube"></i> </div>
+        </a>
+        <a href="http://facebook.com" target="_blank" class="ytlink">
+            <div class="fb"><i class="icon-facebook"></i></div>
+        </a>
+        <a href="http://twitter.com" target="_blank" class="ytlink">
+            <div class="tw"><i class="icon-twitter-bird"></i></div>
+        </a>
+        <a href="http://plus.google.com" target="_blank" class="ytlink">
+            <div class="gp"> <i class="icon-gplus"></i></div>
+        </a>
+    </div>
+
 </div>
-
-
-
-
 
 </body>
 </html>

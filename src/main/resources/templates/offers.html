@@ -2,54 +2,95 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
-    <title>Offers Manager</title>
+    <meta charset="UTF-8">
+    <title>Rekrutacja</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetTemplate.css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
 </head>
 <body>
 
-<div align="center">
-    <h1>Offers List</h1>
-    <a href="/admin/offers/add">Create New Product</a>
-    <br/><br/>
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Salary</th>
-            <th>Requirements</th>
-            <th>Description</th>
-            <th>VacantNumber</th>
-            <th>End Date</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="offer : ${offerList}">
-            <td th:text="${offer.id}">ID</td>
-            <td th:text="${offer.title}">Title</td>
-            <td th:text="${offer.salary}">Salary</td>
-            <td th:text="${offer.requirements}">Requirements</td>
-            <td th:text="${offer.description}">Description</td>
-            <td th:text="${offer.vacantNumber}">VacantNumber</td>
-            <td th:text="${offer.endDate}">EndDate</td>
-            <td>
-<!--                <a href="/@{'/home/edit/' + ${offer.id}}">Edit</a>-->
-                &nbsp;&nbsp;&nbsp;
-                <form th:action="@{'/home/editoffer/'+${offer.id}}" method="GET" class="form-signin">
-                    <button type="Submit" >EditOffer</button>
-                </form>
+<div class = "container">
 
-                <form th:action="@{'/home/delete/'+${offer.id}}" method="DELETE" class="form-signin">
-                    <button type="Submit" th:text="DeleteOffer"></button>
-                </form>
-<!--                <a href="/@{'/home/offer/delete/' + ${offer.id}}">Delete</a>-->
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
+    </div>
+
+    <div class="mainContainer">
+        <div class="menu">
+
+            <ol>
+                <li><a href="/home/offers">Oferty pracy</a></li>
+                <li><a href="#">Twoje rekrutacje</a>
+                    <ul>
+                        <li><a href="#">Trwające</a></li>
+                        <li><a href="#">Zakończone</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Konto</a>
+                    <ul>
+                        <li><a href="@{'/home/offer/'+${1}}">Szczegóły</a></li>
+                        <li><a href="#">Edycja</a></li>
+                        <li><a href="#">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <div class="singleOffer" th:each="offer : ${offerList}">
+
+                <div class="leftOffer" id="offer1left" th:text="${offer.title}" />
+                <div class="rightOffer" >
+                    <form th:action="@{'/admin/offer/'+${offer.id}}" method="GET" class="form-signin">
+                        <button type="Submit" class="offerButton">SZCZEGÓŁY</button>
+                    </form>
+
+                    <!--                    <input type="button" class="offerButton" value="SZCZEGÓŁY">-->
+                    <!--                    <input type="button" class="offerButton" value="APLIKUJ">-->
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
 </div>
 
+<div id="footer">
+
+    <div id="foot">
+        Rekrutacja idealna! <br>
+        Wszelkie prawa zastrzeżone 2019<br/>
+        Created by Mateusz Harazin </div>
+    <a href="http://youtube.com" target="_blank" class="ytlink">
+        <div class="yt"><i class="icon-youtube"></i> </div>
+    </a>
+    <a href="http://facebook.com" target="_blank" class="ytlink">
+        <div class="fb"><i class="icon-facebook"></i></div>
+    </a>
+    <a href="http://twitter.com" target="_blank" class="ytlink">
+        <div class="tw"><i class="icon-twitter-bird"></i></div>
+    </a>
+    <a href="http://plus.google.com" target="_blank" class="ytlink">
+        <div class="gp"> <i class="icon-gplus"></i></div>
+    </a>
+</div>
+
+</div>
 
 </body>
 </html>
+
+
+

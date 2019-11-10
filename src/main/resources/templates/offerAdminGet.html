@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Rekrutacja</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetTemplate.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
+</head>
+<body>
+
+<div class = "container">
+
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
+    </div>
+
+    <div class="mainContainer">
+        <div class="menu">
+
+            <ol>
+                <li><a href="/home/offers">Oferty pracy</a></li>
+                <li><a href="#">Twoje rekrutacje</a>
+                    <ul>
+                        <li><a href="#">Trwające</a></li>
+                        <li><a href="#">Zakończone</a></li>x
+                    </ul>
+                </li>
+                <li><a href="#">Konto</a>
+                    <ul>
+                        <li><a href="/home/user/get">Szczegóły</a></li>
+                        <li><a href="#">Edycja</a></li>
+                        <li><a href="#">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+
+        </div>
+
+        <div>
+            <div class="offerTitle" th:text="${offer.get().title}" />
+            <div class="offerDate" th:text="'Data zakończenia: ' + ${offer.get().endDate}"/>
+            <div class="offerHeader" > Opis </div>
+            <div class="offerDate" th:text="${offer.get().description}"/>
+            <div class="offerHeader" > Wymagania </div>
+            <div class="offerDate" th:text="${offer.get().requirements}" />
+            <div class="offerHeader" > Wynagrodzenie </div>
+            <div class="offerDate" th:text="${offer.get().salary} + ' PLN miesięcznie'" />
+            <div class="offerHeader" > Ilość vacatów </div>
+            <div class="offerDate" th:text="${offer.get().vacantNumber}" />
+<!--            <p th:text="'offer: ' + ${offer.toString()}" />-->
+
+
+
+            <form th:action="@{'/admin/offer/edit/'+${offer.get().id}}" method="GET" class="form-signin">
+                <button type="Submit" class="applayButton">Edytuj</button>
+            </form>
+            <form th:action="@{'/admin/offer/delete/'+${offer.get().id}}" method="GET" class="form-signin">
+                <button type="Submit" class="applayButton">Usuń</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div id="footer">
+
+        <div id="foot">
+            Rekrutacja idealna! <br>
+            Wszelkie prawa zastrzeżone 2019<br/>
+            Created by Mateusz Harazin </div>
+        <a href="http://youtube.com" target="_blank" class="ytlink">
+            <div class="yt"><i class="icon-youtube"></i> </div>
+        </a>
+        <a href="http://facebook.com" target="_blank" class="ytlink">
+            <div class="fb"><i class="icon-facebook"></i></div>
+        </a>
+        <a href="http://twitter.com" target="_blank" class="ytlink">
+            <div class="tw"><i class="icon-twitter-bird"></i></div>
+        </a>
+        <a href="http://plus.google.com" target="_blank" class="ytlink">
+            <div class="gp"> <i class="icon-gplus"></i></div>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

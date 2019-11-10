@@ -1,0 +1,72 @@
+.label
+{
+    width: 250px;
+    height: 30px;
+    font-size: medium;
+    text-align: left;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 15px;
+}
+
+.buttonForm
+{
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #003366;
+    border-color: #003366;
+    font-size: medium;
+    font-family: 'Josefin Sans';
+    color: #D3D3D3;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-top: 10px;
+    margin-left: 325px;
+}
+
+.buttonForm:hover
+{
+    color: white;
+    background-color: #004080;
+    text-shadow: 1px 1px #696969;
+    cursor: pointer;
+}
+
+.buttonSubmit
+{
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #003366;
+    border-color: #003366;
+    font-size: larger;
+    font-family: 'Josefin Sans';
+    color: #D3D3D3;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-top: 30px;
+    margin-left: 350px;
+}
+
+.buttonSubmit:hover
+{
+    color: white;
+    background-color: #004080;
+    text-shadow: 1px 1px #696969;
+    cursor: pointer;
+}
+
+.labelTitle
+{
+    width: 100px;
+    height: 35px;
+    font-size: medium;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 320px;
+    background-color: #004080;
+    padding: auto;
+    float: left;
+}

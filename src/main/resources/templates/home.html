@@ -1,10 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="PL">
 <head>
-<meta charset="ISO-8859-1">
-<title>hello</title>
+    <meta charset="UTF-8">
+    <title>Rekrutacja</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetTemplate.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
 </head>
 <body>
-<h1>Hello site User!</h1>
+
+<div class = "container">
+
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
+    </div>
+
+    <div class="mainContainer">
+        <div class="menu">
+
+            <ol>
+                <li><a href="/home/offers">Oferty pracy</a></li>
+                <li><a href="#">Twoje rekrutacje</a>
+                    <ul>
+                        <li><a href="#">Trwające</a></li>
+                        <li><a href="#">Zakończone</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Konto</a>
+                    <ul>
+                        <li><a href="/home/user/get">Szczegóły</a></li>
+<!--                        '/home/user/'+${user.id}-->
+<!--                            <form th:action="@{'/home/user/'+${user.id}}" method="GET" class="form-signin">-->
+<!--                            <button type="Submit">Szczegóły</button>-->
+<!--                        </form></li>-->
+                        <li><a href="#">Edycja</a></li>
+                        <li><a href="#">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+            <!--            <div id="mainMenu">-->
+            <!--                <p id="button1" class="button">Oferty pracy</p>-->
+            <!--                <p id="button2" class="button">Rekrutacja</p>-->
+            <!--                <p id="button3" class="button">Konto</p>-->
+            <!--                <p id="button4" class="button">Modify user</p>-->
+            <!--                <p id="button5" class="button">Delete user</p>-->
+            <!--            </div>-->
+            <!--            <div id="subMenu">-->
+            <!--                <p id="subButton1" class="subButton">All users</p>-->
+            <!--                <p id="subButton2" class="subButton">Specific user</p>-->
+            <!--                <p id="subButton3" class="subButton">Add new user</p>-->
+            <!--                <p id="subButton4" class="subButton">Modify user</p>-->
+            <!--            </div>-->
+
+        </div>
+
+        <div>
+            HELLO USER SITE!
+            <p th:text="${user.firstName} + ' ' + ${user.lastName}"/>
+
+            <p th:text="${user.getEmail()} "/>
+<!--            <p th:text="'offer: ' + ${offer.toString()}" />-->
+        </div>
+
+    </div>
+
+    <div id="footer">
+
+        <div id="foot">
+            Rekrutacja idealna! <br>
+            Wszelkie prawa zastrzeżone 2019<br/>
+            Created by Mateusz Harazin </div>
+        <a href="http://youtube.com" target="_blank" class="ytlink">
+            <div class="yt"><i class="icon-youtube"></i> </div>
+        </a>
+        <a href="http://facebook.com" target="_blank" class="ytlink">
+            <div class="fb"><i class="icon-facebook"></i></div>
+        </a>
+        <a href="http://twitter.com" target="_blank" class="ytlink">
+            <div class="tw"><i class="icon-twitter-bird"></i></div>
+        </a>
+        <a href="http://plus.google.com" target="_blank" class="ytlink">
+            <div class="gp"> <i class="icon-gplus"></i></div>
+        </a>
+    </div>
+
+</div>
+
 </body>
 </html>

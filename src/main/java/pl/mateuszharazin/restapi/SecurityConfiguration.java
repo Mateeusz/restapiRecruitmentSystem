@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 
 @Configuration
@@ -44,8 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers("/", "/home", "/js/**", "/css/**", "/Stylesheets/**", "/resources/**").permitAll()
-                .antMatchers("/").permitAll()
+                .antMatchers( "/js/**", "/img/**", "/css/**", "/Stylesheets/**", "/resources/**").permitAll()
+//                .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/offers/**").permitAll()
@@ -74,26 +72,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
-//        web.ignoring().antMatchers("/resources/**", "/static/**", "/js/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/js/**");
 
 
     }
-
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler(
-//                "/webjars/**",
-//                "/img/**",
-//                "/css/**",
-//                "/js/**")
-//                .addResourceLocations(
-//                        "classpath:/META-INF/resources/webjars/",
-//                        "classpath:/static/img/",
-//                        "classpath:/static/css/",
-//                        "classpath:/static/js/");
-//    }
-
-//}
-
 }

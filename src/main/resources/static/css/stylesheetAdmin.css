@@ -1,0 +1,330 @@
+body
+{
+    background-image: url("../img/brushed.png");
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+}
+
+.header
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    /*background-image: url("Images/brushed.png");*/
+}
+.title
+{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 70px;
+    color: 	#6495ed;
+    width: 1000px;
+    height: 60px;
+    background-image: url("../img/brushed.png");
+    text-align: center;
+    text-shadow: 2px 2px #696969;
+    background-color: #003366;
+    padding-bottom: 10px;
+
+
+    /* padding: 10px;
+    padding-top: 20px; */
+    min-height: 30px;
+    border-bottom: dimgrey;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-style: solid;
+}
+.motto
+{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    width: 1000px;
+    color:	#696969;
+    background-image: url("../img/brushed.png");
+    text-align: center;
+    height: 40px;
+    margin-top: 0px;
+}
+
+.mainContainer
+{
+    margin: auto;
+    width: 1000px;
+    min-height: 800px;
+    max-height: 2000px;
+    border-style: solid;
+    border-color: dimgrey;
+    border-radius: 20px;
+    border-width: 1px;
+}
+
+.menu
+{
+    margin-top: 20px;
+    width: 900px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.button
+{
+    float: left;
+    background-color: #003366;
+    width: 120px;
+    padding: 10px;
+    margin-top: 10px;
+    /* margin: 5px; */
+    text-align: center;
+    cursor: pointer;
+
+}
+.button:hover
+{
+    background-color: #004080;
+    padding-bottom: 15px;
+}
+.subButton
+{
+    float: left;
+    background-color: #004080;
+    width: 120px;
+    height: 20px;
+    padding: 5px;
+    /* margin: 5px; */
+    text-align: center;
+    cursor: pointer;
+    border-radius: 30px;
+    margin: 10px 10px 10px 10px;
+    font-size: medium;
+
+}
+.subButton:hover
+{
+    background-color: #003366;
+}
+
+ol
+{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    font-size: 20px;
+    text-align: center;
+    height: 35px;
+    line-height: 200%;
+    display: inline-block;
+}
+
+ol a
+{
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+
+}
+
+ol > li
+{
+    float: left;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #003366;
+    border-radius: 30px;
+    margin: 10px;
+    background-color: #003366;
+
+}
+
+ol > li:first-child
+{
+    border-left: 1px solid #003366;
+    width: 150px;
+}
+
+ol > li:hover
+{
+    background-color: #004080;
+}
+
+ol > li:hover > a
+{
+    color: #ffffff;
+}
+
+ol > li > ul
+{
+    list-style-type: none;
+    padding: 0;
+    margin: 0px;
+    height: 40px;
+    display: none;
+    margin-left: 32px;
+}
+
+ol > li:hover > ul
+{
+    display: block;
+}
+
+ol > li > ul > li
+{
+    background-color:#003366;
+    position: center;
+    z-index: 100;
+    border-top: 1px solid #003366;
+    width: 170px;
+}
+
+ol > li > ul > li:hover
+{
+    background-color: #004080;
+}
+
+ol > li > ul > li:hover > a
+{
+    color: white;
+}
+
+#footer
+{
+    width: 1000px;
+    background-color: #003366;
+    min-height: 100px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+#foot
+{
+    font-size: small;
+    float: left;
+    width: 610px;
+    background-color: #003366;
+    color: white;
+    padding: 5px;
+    min-height: 80px;
+    margin: 5px;
+}
+
+.yt
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+.yt:hover
+{
+    background-color: #004080;
+}
+.fb
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+.fb:hover
+{
+    background-color: #004080;
+}
+.tw
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+.tw:hover
+{
+    background-color: #004080;
+}
+.gp
+{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+.gp:hover
+{
+    background-color: #004080;
+}
+a.ytlink
+{
+    color: #ffffff;
+    text-decoration: none;
+
+}
+
+
+.singleOffer
+{
+    width: 998px;
+    height: 80px;
+    background-color: #AAABB8;
+    font-size: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 20px;
+    border-color: #D3D3D3;
+    border-style: solid;
+    border-width: 1px;
+    text-shadow: 1px 1px #696969;
+
+
+}
+
+.singleOffer:hover
+{
+    background-color: #D3D3D4;
+    text-shadow: 3px 2px #696969;
+}
+
+.offerButton
+{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #003366;
+    border-color: #003366;
+    font-size: large;
+    font-family: 'Josefin Sans';
+    color: #D3D3D3;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-top: 10px;
+}
+
+.offerButton:hover
+{
+    color: white;
+    background-color: #004080;
+    text-shadow: 1px 1px #696969;
+    cursor: pointer;
+}
+
+.leftOffer
+{
+
+    float: left;
+    width: 830px;
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.rightOffer
+{
+    width: 160px;
+    float: left;
+    margin-top: 10px;
+    padding-left: 50px;
+}

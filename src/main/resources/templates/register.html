@@ -1,47 +1,184 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Registration Form</title>
-<!-- link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" /-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body style="background-color: #ededed;">
-	<div style="background-color: #337ab7; height: 50px;"></div>
-	<div class="container-fluid" style="margin-top: 30px;">
 
-		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
-			<form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post" class="form-signin" role="form">
-				<h3 class="form-signin-heading">Registration Form</h3>
-				<div class="form-group">
-					<div class="">
-						<input type="text" th:field="*{firstName}" placeholder="Name" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="">
-						<input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="">
-						<input type="text" th:field="*{email}" placeholder="Email" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="">
-						<input type="password" th:field="*{password}" placeholder="Password" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="">
-						<button type="submit" class="btn btn-primary btn-block">Register User</button>
-					</div>
-				</div>
-				<span th:utext="${successMessage}"></span>
-			</form>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="PL">
+<head>
+	<meta charset="UTF-8">
+	<title>Praca idealna!</title>
+	<link rel="stylesheet" type="text/css" href="/css/stylesheetWelcome.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+	<!--        <script type="text/javascript" src="/js/logIn.js" />-->
+	<script type="text/javascript" src="/js/logIn.js"></script>
+
+
+
+
+</head>
+<body onload="load()">
+
+
+<div class = "containter">
+
+	<div class="header">
+		<div class="title">
+			<a href="/login" class="ytlink"> Rekrutacja idealna! </a>
 		</div>
+
+		<div class="motto">
+			<p>rozpocznij swoją karierę w firmie XYZ!</p>
+		</div>
+
 	</div>
+
+	<div class="users" id="usersDiv"></div>
+
+	<div id="mainContainor">
+		<div id="left">
+
+		</div>
+
+		<div id="right">
+<!--			<div id="login" class="rightChild">-->
+<!--				Panel logowania:<br>-->
+<!--				&lt;!&ndash;                <div class="labelDescription" id="loginLabel" onkeypress="showLabel()" > e-mail </div>&ndash;&gt;-->
+<!--				<form th:action="@{/login}" method="POST">-->
+<!--					<input input type="text" id="email" name="email" th:placeholder="email" class="loginLabel" required-->
+<!--						   oninvalid="this.setCustomValidity('Podaj login')"-->
+<!--						   placeholder="e-mail"> <br>-->
+<!--					&lt;!&ndash;                <div class="labelDescription" > hasło </div>&ndash;&gt;-->
+<!--					<input type="password" th:placeholder="hasło" id="password" name="password" class="loginLabel" required-->
+<!--						   oninvalid="this.setCustomValidity('Podaj hasło')"> <br>-->
+
+<!--					<input name="Submit" value="Login" type="Submit" id="logInBut" class="button">-->
+<!--					<span th:utext="${successMessage}"></span>-->
+<!--				</form>-->
+<!--				<div class="divRe" id="divRegistry">-->
+<!--					Nie masz konta?-->
+<!--					&lt;!&ndash;                    <form action="/register" method="get">&ndash;&gt;-->
+<!--					<a href="/register"><input type="button" id="registryBut" class="buttonReg" value="Rejestracja" ></a>-->
+<!--					&lt;!&ndash;                    <input type="button" id="registryBut" class="buttonReg" value="Rejestracja" onclick="clickRegistry()">&ndash;&gt;-->
+<!--					&lt;!&ndash;                    </form>&ndash;&gt;-->
+<!--				</div>-->
+
+<!--			</div>-->
+
+			<div id="login" class="rightChild">
+
+				Rejestracja: <br>
+				                <form th:action="@{/register}" th:object="${user}" method="post" role="form">
+				                <input type="text" th:field="*{firstName}" class="registryLabel" required placeholder="imię"> <br>
+				                <input type="text" th:field="*{lastName}" class="registryLabel" required placeholder="nazwisko"> <br>
+				                <input type="text" th:field="*{email}" class="registryLabel" required placeholder="e-mail"> <br>
+				                <input type="password" th:field="*{password}"class="registryLabel" required placeholder="hasło"> <br>
+				                <input type="password" class="registryLabel" required placeholder="powtórz hasło"> <br>
+
+				                <input type="submit" id="registryButton" class="button" value="Zarejestruj">
+				                    <br><span class="span" th:utext="${successMessage}" style="font-size: small; color: crimson"></span>
+				                </form>
+				<div class="divRe" id="divLogin">
+					Masz już konto?
+					<a href="/login"><input type="button" id="registryBut" class="buttonReg" value="Logowanie" ></a>
+				</div>
+
+			</div>
+
+		</div>
+
+		<!--        <div id="right">-->
+		<!--            <div id="login" class="rightChild">-->
+
+		<!--                Panel logowania:<br>-->
+		<!--&lt;!&ndash;                                <div class="labelDescription" id="loginLabel" onkeypress="showLabel()" > e-mail </div>&ndash;&gt;-->
+		<!--                        <form th:action="@{/login}" method="POST" class="form-signin">-->
+		<!--                            <h3 class="form-signin-heading" th:text="Login"></h3>-->
+		<!--                           <br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br>-->
+		<!--                            <input type="password" th:placeholder="Password" id="password" name="password" class="form-control" /> <br>-->
+		<!--                           <div align="center" th:if="${param.error}">-->
+		<!--                               <p>Email or Password is invalid.</p>-->
+		<!--                           </div>-->
+		<!--                           <button class="btn btn-lg btn-primary" name="Submit" value="Login" type="Submit" th:text="Login" style="margin-right:10px;"></button>-->
+		<!--                       </form>-->
+		<!--                        <div class="divRe" id="divRegistry">-->
+		<!--                            Nie masz konta?-->
+		<!--                            <input type="button" id="registryBut" class="buttonReg" value="Rejestracja" >-->
+		<!--&lt;!&ndash;                            onclick="clickRegistry()"&ndash;&gt;-->
+		<!--                        </div>-->
+		<!--                </form>-->
+		<!--            </div>-->
+		<!--        </div>-->
+
+	</div>
+
+
+	<div id="footer">
+
+		<div id="foot">
+			Rekrutacja idealna! <br>
+			Wszelkie prawa zastrzeżone 2019<br/>
+			Created by Mateusz Harazin </div>
+		<a href="http://youtube.com" target="_blank" class="ytlink">
+			<div class="yt"><i class="icon-youtube"></i> </div>
+		</a>
+		<a href="http://facebook.com" target="_blank" class="ytlink">
+			<div class="fb"><i class="icon-facebook"></i></div>
+		</a>
+		<a href="http://twitter.com" target="_blank" class="ytlink">
+			<div class="tw"><i class="icon-twitter-bird"></i></div>
+		</a>
+		<a href="http://plus.google.com" target="_blank" class="ytlink">
+			<div class="gp"> <i class="icon-gplus"></i></div>
+		</a>
+	</div>
+
+</div>
+
+
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--<title>Registration Form</title>-->
+<!--&lt;!&ndash; link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" /&ndash;&gt;-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--</head>-->
+<!--<body style="background-color: #ededed;">-->
+<!--	<div style="background-color: #337ab7; height: 50px;"></div>-->
+<!--	<div class="container-fluid" style="margin-top: 30px;">-->
+
+<!--		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">-->
+<!--			<form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post" class="form-signin" role="form">-->
+<!--				<h3 class="form-signin-heading">Registration Form</h3>-->
+<!--				<div class="form-group">-->
+<!--					<div class="">-->
+<!--						<input type="text" th:field="*{firstName}" placeholder="Name" class="form-control" />-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="form-group">-->
+<!--					<div class="">-->
+<!--						<input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control" />-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="form-group">-->
+<!--					<div class="">-->
+<!--						<input type="text" th:field="*{email}" placeholder="Email" class="form-control" />-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="form-group">-->
+<!--					<div class="">-->
+<!--						<input type="password" th:field="*{password}" placeholder="Password" class="form-control" />-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="form-group">-->
+<!--					<div class="">-->
+<!--						<button type="submit" class="btn btn-primary btn-block">Register User</button>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<span th:utext="${successMessage}"></span>-->
+<!--			</form>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</body>-->
+<!--</html>-->
