@@ -1,57 +1,128 @@
 <!DOCTYPE html>
-<html lang="PL" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="PL">
 <head>
-    <title>New job offer</title>
-    <!-- link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" /-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body style="background-color: #ededed;">
-<div style="background-color: #337ab7; height: 50px;"></div>
-<div class="container-fluid" style="margin-top: 30px;">
+    <meta charset="UTF-8">
+    <title>Rekrutacja</title>
 
-    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
-        <form autocomplete="off" action="#" th:action="@{'/home/editoffer/'+${offer.id}}" th:object="${offer}" method="post" class="form-signin" role="form">
-            <h3 class="form-signin-heading">Add New Offer</h3>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{title}" placeholder="Tytuł" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{salary}" placeholder="Min wynagrodzenie" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{description}" placeholder="Opis" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{requirements}" placeholder="Wymagania" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{vacantNumber}" placeholder="Ilość vacatów" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{endDate}" placeholder="Data zakończenia 'rrrr-mm-dd'" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <button type="submit" class="btn btn-primary btn-block">EDIT offer</button>
-                </div>
-            </div>
-            <span th:utext="${successMessage}"></span>
-        </form>
+    <link rel="stylesheet" type="text/css" href="/Users/mateusz/Documents/GitHub/restapiRecruitmentSystem/src/main/resources/static/css/stylesheetAdmin.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetAdmin.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetForm.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
+</head>
+<body>
+
+<div class = "container">
+
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
     </div>
+
+    <div class="mainContainer">
+        <div class="menu">
+
+            <ol>
+                <li><a href="/admin/offers">Oferty pracy</a>
+                    <ul>
+                        <li><a href="#">text</a></li>
+                        <li><a href="#">text</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Rekrutacje</a>
+                    <ul>
+                        <li><a href="#">Trwające</a></li>
+                        <li><a href="#">Zakończone</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Testy</a>
+                    <ul>
+                        <li><a href="#">text</a></li>
+                        <li><a href="#">text</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Konto</a>
+                    <ul>
+                        <li><a href="/home/user/get">Szczegóły</a></li>
+                        <!--                        '/home/user/'+${user.id}-->
+                        <!--                            <form th:action="@{'/home/user/'+${user.id}}" method="GET" class="form-signin">-->
+                        <!--                            <button type="Submit">Szczegóły</button>-->
+                        <!--                        </form></li>-->
+                        <li><a href="#">Edycja</a></li>
+                        <li><a href="#">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <form th:action="@{/admin/offers/add}" th:object="${offer}" method="post">
+                <div class="offerTitle" text="Dodaj nowy test"> Dodaj nową ofertę pracy  </div>
+
+                <br> <div class="labelTitle" >Tytuł: </div>
+                <div>
+                    <input type="text" th:field="*{title}" placeholder="Tytuł" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Pensja min.: </div>
+                <div>
+                    <input type="text" th:field="*{salary}" placeholder="Pensja min." class="label" />
+                </div>
+                <br> <div class="labelTitle" >Opis: </div>
+                <div>
+                    <input type="text" th:field="*{description}" placeholder="Opis" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Wymagania: </div>
+                <div>
+                    <input type="text" th:field="*{requirements}" placeholder="Wymagania" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Vacaty: </div>
+                <div>
+                    <input type="text" th:field="*{vacantNumber}" placeholder="Vacaty" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Data zakończenia: </div>
+                <div>
+                    <input type="text" th:field="*{endDate}" placeholder="Data zakończenia 'rrrr-mm-dd'" class="label" />
+                </div>
+                <div>
+
+                    <button type="submit" class="buttonSubmit">Edytuj</button>
+                </div>
+<!--                <span th:utext="${successMessage}"></span>-->
+            </form>
+        </div>
+
+    </div>
+
+    <div id="footer">
+
+        <div id="foot">
+            Rekrutacja idealna! <br>
+            Wszelkie prawa zastrzeżone 2019<br/>
+            Created by Mateusz Harazin </div>
+        <a href="http://youtube.com" target="_blank" class="ytlink">
+            <div class="yt"><i class="icon-youtube"></i> </div>
+        </a>
+        <a href="http://facebook.com" target="_blank" class="ytlink">
+            <div class="fb"><i class="icon-facebook"></i></div>
+        </a>
+        <a href="http://twitter.com" target="_blank" class="ytlink">
+            <div class="tw"><i class="icon-twitter-bird"></i></div>
+        </a>
+        <a href="http://plus.google.com" target="_blank" class="ytlink">
+            <div class="gp"> <i class="icon-gplus"></i></div>
+        </a>
+    </div>
+
 </div>
+
 </body>
 </html>
