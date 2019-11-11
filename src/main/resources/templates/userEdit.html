@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <title>Rekrutacja</title>
 
+    <link rel="stylesheet" type="text/css" href="/Users/mateusz/Documents/GitHub/restapiRecruitmentSystem/src/main/resources/static/css/stylesheetAdmin.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
     <link rel="stylesheet" type="text/css" href="/css/stylesheetAdmin.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetForm.css"/>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
     <script src="/js/clientPage.js" defer></script>
 
@@ -56,36 +61,40 @@
         </div>
 
         <div>
-            <p>Nazwa testu: </p>
-            <input type="text" placeholder="nazwa"> <br>
-
-            <button>Dodaj pytanie</button>
-            <button>Utwórz test</button>
-
             <div>
-                <p>Dodaj pytanie: </p>
-                <p>Jedna poprawna odpowiedź TAK/NIE </p>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-                <p>treść pytania: </p>
-                <input type="text" placeholder="treść"> <br>
-                <p>odpowiedź 1: </p>
-                <input type="text" placeholder="odpowiedź 1"> <input type="checkbox"> <br>
-                <p>odpowiedź 2: </p>
-                <input type="text" placeholder="odpowiedź 2"> <input type="checkbox"> <br>
-                <p>odpowiedź 3: </p>
-                <input type="text" placeholder="odpowiedź 3"> <input type="checkbox"> <br>
-                <p>odpowiedź 4: </p>
-                <input type="text" placeholder="odpowiedź 4"> <input type="checkbox"> <br>
-                <button>Dodaj</button>
+
+                <div class="offerTitle" text="Edytuj dane perosnalne"> Dodaj nowy test  </div>
+
+                <div>
+                    <form th:action="@{/home/user/edit}" th:object="${user}" method="post" >
+
+
+
+
+                        <br> <div class="labelTitle" >Imię: </div>
+                        <div>
+                            <input type="text" class="label" th:field="*{firstName}" placeholder="Imię" />
+                        </div>
+
+                        <br> <div class="labelTitle" >Nazwisko </div>
+                        <div>
+                            <input type="text" class="label" th:field="*{lastName}" placeholder="Nazwisko"/>
+                        </div>
+                        <br> <div class="labelTitle" >Numer telefonu </div>
+                        <div>
+                            <input type="text" class="label" th:field="*{phoneNumber}" placeholder="Numer telefonu"/>
+                        </div>
+                        <div>
+                            <div>
+
+                                <button type="submit" class="buttonSubmit">Edytuj</button>
+                            </div>
+                        </div>
+                                    <span th:utext="${successMessage}"></span>
+                    </form>
+                </div>
             </div>
 
-            <div>
-                <p>Lista dodanych pytań: </p>
-
-            </div>
         </div>
 
     </div>

@@ -70,3 +70,38 @@
     padding: auto;
     float: left;
 }
+
+.offerlabelSmall
+{
+    width: 400px;
+    height: 30px;
+    font-size: medium;
+    text-align: left;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.offerlabelLarge
+{
+    width: 400px;
+    height: 90px;
+    font-size: medium;
+    text-align: left;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.offerLabelTitle
+{
+    width: 150px;
+    height: 35px;
+    font-size: medium;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 150px;
+    background-color: #004080;
+    padding: auto;
+    float: left;
+}

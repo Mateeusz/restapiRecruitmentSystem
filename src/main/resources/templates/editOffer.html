@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
     <link rel="stylesheet" type="text/css" href="/css/stylesheetAdmin.css"/>
     <link rel="stylesheet" type="text/css" href="/css/stylesheetForm.css"/>
+
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
     <script src="/js/clientPage.js" defer></script>
 
@@ -53,50 +54,46 @@
                 <li><a href="#">Konto</a>
                     <ul>
                         <li><a href="/home/user/get">Szczegóły</a></li>
-                        <!--                        '/home/user/'+${user.id}-->
-                        <!--                            <form th:action="@{'/home/user/'+${user.id}}" method="GET" class="form-signin">-->
-                        <!--                            <button type="Submit">Szczegóły</button>-->
-                        <!--                        </form></li>-->
-                        <li><a href="#">Edycja</a></li>
-                        <li><a href="#">Wyloguj</a></li>
+                        <li><a href="/home/user/edit">Edycja</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
                     </ul>
                 </li>
             </ol>
         </div>
 
         <div>
-            <form th:action="@{/admin/offers/add}" th:object="${offer}" method="post">
-                <div class="offerTitle" text="Dodaj nowy test"> Dodaj nową ofertę pracy  </div>
+            <form th:action="@{'/admin/offer/edit/'+${offer.getId()}}" th:object="${offer}" method="post">
+                <div class="offerTitle" text="Dodaj nowy test"> Edytuj ofertę pracy  </div>
 
-                <br> <div class="labelTitle" >Tytuł: </div>
+                <br> <div class="offerLabelTitle" >Tytuł: </div>
                 <div>
-                    <input type="text" th:field="*{title}" placeholder="Tytuł" class="label" />
+                    <input type="text" th:field="*{title}" placeholder="Tytuł" class="offerlabelSmall" />
                 </div>
-                <br> <div class="labelTitle" >Pensja min.: </div>
+                <br> <div class="offerLabelTitle" >Pensja min.: </div>
                 <div>
-                    <input type="text" th:field="*{salary}" placeholder="Pensja min." class="label" />
+                    <input type="text" th:field="*{salary}" placeholder="Pensja min." class="offerlabelSmall" />
                 </div>
-                <br> <div class="labelTitle" >Opis: </div>
+                <br> <div class="offerLabelTitle" >Opis: </div>
                 <div>
-                    <input type="text" th:field="*{description}" placeholder="Opis" class="label" />
+                    <input type="text" th:field="*{description}" placeholder="Opis" class="offerlabelLarge" />
                 </div>
-                <br> <div class="labelTitle" >Wymagania: </div>
+                <br> <div class="offerLabelTitle" >Wymagania: </div>
                 <div>
-                    <input type="text" th:field="*{requirements}" placeholder="Wymagania" class="label" />
+                    <input type="text" th:field="*{requirements}" placeholder="Wymagania" class="offerlabelLarge" />
                 </div>
-                <br> <div class="labelTitle" >Vacaty: </div>
+                <br> <div class="offerLabelTitle" >Vacaty: </div>
                 <div>
-                    <input type="text" th:field="*{vacantNumber}" placeholder="Vacaty" class="label" />
+                    <input type="text" th:field="*{vacantNumber}" placeholder="Vacaty" class="offerlabelSmall" />
                 </div>
-                <br> <div class="labelTitle" >Data zakończenia: </div>
+                <br> <div class="offerLabelTitle" >Data zakończenia: </div>
                 <div>
-                    <input type="text" th:field="*{endDate}" placeholder="Data zakończenia 'rrrr-mm-dd'" class="label" />
+                    <input type="text" th:field="*{endDate}" placeholder="Data zakończenia 'rrrr-mm-dd'" class="offerlabelSmall" />
                 </div>
                 <div>
 
                     <button type="submit" class="buttonSubmit">Edytuj</button>
                 </div>
-<!--                <span th:utext="${successMessage}"></span>-->
+                <span th:utext="${successMessage}"></span>
             </form>
         </div>
 

@@ -53,62 +53,15 @@
                 </form>
                 <div class="divRe" id="divRegistry">
                     Nie masz konta?
-<!--                    <form action="/register" method="get">-->
                         <a href="/register"><input type="button" id="registryBut" class="buttonReg" value="Rejestracja" ></a>
-<!--                    <input type="button" id="registryBut" class="buttonReg" value="Rejestracja" onclick="clickRegistry()">-->
-<!--                    </form>-->
+
                 </div>
 
             </div>
-
-<!--            <div id="registry" class="rightChild">-->
-
-<!--                Rejestracja: <br>-->
-<!--                <form th:action="@{/register}" th:object="${user}" method="post" role="form">-->
-<!--                <input type="text" th:field="*{firstName}" class="registryLabel" required placeholder="imię"> <br>-->
-<!--                <input type="text" th:field="*{lastName}" class="registryLabel" required placeholder="nazwisko"> <br>-->
-<!--                <input type="text" th:field="*{email}" class="registryLabel" required placeholder="e-mail"> <br>-->
-<!--                <input type="text" th:field="*{password}"class="registryLabel" required placeholder="hasło"> <br>-->
-<!--                <input type="text" class="registryLabel" required placeholder="powtórz hasło"> <br>-->
-
-<!--                <input type="button" id="registryButton" class="button" value="Zarejestruj">-->
-<!--                    <span th:utext="${successMessage}"></span>-->
-<!--                </form>-->
-<!--                <div class="divRe" id="divLogin">-->
-<!--                    Masz już konto?-->
-<!--                    <input type="button" id="logBut" class="buttonReg" value="Zaloguj" onclick="clickLogin()">-->
-<!--                </div>-->
-
             </div>
 
         </div>
-
-<!--        <div id="right">-->
-<!--            <div id="login" class="rightChild">-->
-
-<!--                Panel logowania:<br>-->
-<!--&lt;!&ndash;                                <div class="labelDescription" id="loginLabel" onkeypress="showLabel()" > e-mail </div>&ndash;&gt;-->
-<!--                        <form th:action="@{/login}" method="POST" class="form-signin">-->
-<!--                            <h3 class="form-signin-heading" th:text="Login"></h3>-->
-<!--                           <br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br>-->
-<!--                            <input type="password" th:placeholder="Password" id="password" name="password" class="form-control" /> <br>-->
-<!--                           <div align="center" th:if="${param.error}">-->
-<!--                               <p>Email or Password is invalid.</p>-->
-<!--                           </div>-->
-<!--                           <button class="btn btn-lg btn-primary" name="Submit" value="Login" type="Submit" th:text="Login" style="margin-right:10px;"></button>-->
-<!--                       </form>-->
-<!--                        <div class="divRe" id="divRegistry">-->
-<!--                            Nie masz konta?-->
-<!--                            <input type="button" id="registryBut" class="buttonReg" value="Rejestracja" >-->
-<!--&lt;!&ndash;                            onclick="clickRegistry()"&ndash;&gt;-->
-<!--                        </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-
     </div>
-
-
     <div id="footer">
 
         <div id="foot">

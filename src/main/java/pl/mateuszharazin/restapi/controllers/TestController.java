@@ -67,6 +67,7 @@ public class TestController {
         modelAndView.addObject("questionsIn", questionsIn);
         modelAndView.addObject("allQuestions", allQuestions);
         modelAndView.addObject("test", test);
+        modelAndView.addObject("question", new Question());
 
         modelAndView.setViewName("testAddQuestion");
         return modelAndView;
@@ -76,14 +77,23 @@ public class TestController {
 //    FIXME: check also testRepo to fix SQL Query there's some mistakes ALSO DELETE MODEL
 //    FIXME: HOW TO USE BETWEEN TABLE ??? 
     
-    @RequestMapping(value = "/admin/test/{id}/addQuestion", method = RequestMethod.POST)
-    public ModelAndView addQuestion(@PathVariable("id") int id, @ModelAttribute Question question) {
+    @RequestMapping(value = "/admin/test/{id}/addQuestion/{id2}", method = RequestMethod.POST)
+    public ModelAndView addQuestion(@PathVariable("id") int id, @PathVariable("id2") int questionId) {
 
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println(question.getId() + "  i  " + id);
-        testRepository.insertQuestion(question.getId(), 11);
+        Test test = new Test();
+        test = testRepository.findAllById(id);
+        System.out.println(questionId + "  i  " + " ->> " + id);
+        testRepository.insertQuestion(questionId, id);
 
         modelAndView.setViewName("testAddQuestion");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/test/{id}/addQuestion{id2}", method = RequestMethod.GET)
+    public ModelAndView aftereditTest() {
+        ModelAndView modelAndView = new ModelAndView();
+
         return modelAndView;
     }
 

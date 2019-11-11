@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="PL" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="PL">
 <head>
     <meta charset="UTF-8">
     <title>Add Question To Test</title>
@@ -27,16 +28,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="question : ${questionsIn}">
-            <td th:text="${question.id}">ID</td>
-            <td th:text="${question.questionBody}">Question Body</td>
-            <td th:text="${question.option1}">Question option1</td>
-            <td th:text="${question.option2}">Question option2</td>
-            <td th:text="${question.option3}">Question option3</td>
-            <td th:text="${question.option4}">Question option4</td>
-            <td th:text="${question.answer}">Question answer</td>
+        <tr th:each="questionIn : ${questionsIn}">
+            <td th:text="${questionIn.id}">ID</td>
+            <td th:text="${questionIn.questionBody}">Question Body</td>
+            <td th:text="${questionIn.option1}">Question option1</td>
+            <td th:text="${questionIn.option2}">Question option2</td>
+            <td th:text="${questionIn.option3}">Question option3</td>
+            <td th:text="${questionIn.option4}">Question option4</td>
+            <td th:text="${questionIn.answer}">Question answer</td>
             <td>
-                <form th:action="@{'/admin/test/question/edit/'+${question.id}}" method="GET" class="form-signin">
+                <form th:action="@{'/admin/test/question/edit/'+${questionIn.id}}" method="GET" class="form-signin">
                     <button type="Submit" > Details </button>
                 </form>
             </td>
@@ -51,6 +52,10 @@
     <h1>Dostępne pytania</h1>
 
     <br/><br/>
+
+<!--    <form th:action="@{/admin/offers/add}" th:object="${offer}" method="post">-->
+
+
     <table border="1" cellpadding="10">
         <thead>
         <tr>
@@ -74,7 +79,7 @@
             <td th:text="${question.option4}">Question option4</td>
             <td th:text="${question.answer}">Question answer</td>
             <td>
-                <form th:action="@{'/admin/test/'+${question.id}+'/addQuestion'}" method="POST" class="form-signin">
+                <form th:action="@{'/admin/test/'+${test.id}+'/addQuestion/'+${question.id}}"  method="POST">
                     <button type="Submit" > ADD </button>
                 </form>
             </td>

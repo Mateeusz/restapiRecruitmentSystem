@@ -152,9 +152,8 @@ public class OffersController {
     }
 
     @RequestMapping(value = "/admin/offer/edit/{id}", method = RequestMethod.POST)
-    public ModelAndView putOffer(@PathVariable(value = "id") int id, @Valid @ModelAttribute Offer offer) {
+    public ModelAndView putOffer(@PathVariable(value = "id") int id, @Valid @ModelAttribute Offer offer,  BindingResult bindingResult, ModelMap modelMap) {
 
-        System.out.println("Mat: "+offer.toString());
         ModelAndView modelAndView = new ModelAndView();
         Offer offer1 = offerRepository.findAllById(id);
         offer1.setTitle(offer.getTitle());
@@ -164,10 +163,16 @@ public class OffersController {
         offer1.setVacantNumber(offer.getVacantNumber());
         offer1.setEndDate(offer.getEndDate());
 
+        if(bindingResult.hasErrors()) {
+            modelAndView.addObject("successMessage", "Please correct the errors in form!");
+            modelMap.addAttribute("bindingResult", bindingResult);
+        }
+        else {
+            offerService.newOffer(offer1);
+            modelAndView.addObject("successMessage", "Offer has been updated successfully!");
+        }
         modelAndView.addObject("offer", offer);
-        offerService.newOffer(offer1);
-
-        modelAndView.setViewName("offers");
+        modelAndView.setViewName("editOffer");
         return modelAndView;
     }
 
