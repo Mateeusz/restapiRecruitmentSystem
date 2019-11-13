@@ -48,23 +48,20 @@
         </div>
 
         <div>
-            <div class="offerTitle" th:text="${offer.get().title}" />
-            <div class="offerDate" th:text="'Data zakończenia: ' + ${offer.get().endDate}"/>
-            <div class="offerHeader" > Opis </div>
-            <div class="offerDate" th:text="${offer.get().description}"/>
-            <div class="offerHeader" > Wymagania </div>
-            <div class="offerDate" th:text="${offer.get().requirements}" />
-            <div class="offerHeader" > Wynagrodzenie </div>
-            <div class="offerDate" th:text="${offer.get().salary} + ' PLN miesięcznie'" />
-            <div class="offerHeader" > Ilość vacatów </div>
-            <div class="offerDate" th:text="${offer.get().vacantNumber}" />
-<!--            <p th:text="'offer: ' + ${offer.toString()}" />-->
 
+<!--            <div class="offerDate" th:text="*{mmm}" />-->
+<!--            <div class="offerTitle" th:text="${application.}" />-->
+<!--            <div class="offerDate" th:text="'Data zakończenia: ' + ${app.get().endDate}"/>-->
+<!--            <div class="offerHeader" > Opis </div>-->
+<!--            <div class="offerDate" th:text="${offer.get().description}"/>-->
+<!--            <div class="offerHeader" > Wymagania </div>-->
+<!--            <div class="offerDate" th:text="${offer.get().requirements}" />-->
+<!--            <div class="offerHeader" > Wynagrodzenie </div>-->
+<!--            <div class="offerDate" th:text="${offer.get().salary} + ' PLN miesięcznie'" />-->
+<!--            <div class="offerHeader" > Ilość vacatów </div>-->
+<!--            <div class="offerDate" th:text="${offer.get().vacantNumber}" />-->
+            <!--            <p th:text="'offer: ' + ${offer.toString()}" />-->
 
-
-            <form th:action="@{'/apply/'+${offer.get().id}}" method="GET" class="form-signin">
-                <button type="Submit" class="applayButton">Aplikuj</button>
-            </form>
         </div>
 
     </div>

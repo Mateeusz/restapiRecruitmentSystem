@@ -72,17 +72,11 @@ public class TestController {
         modelAndView.setViewName("testAddQuestion");
         return modelAndView;
     }
-
-//    FIXME: insertQuestion not work as should. Dodaje pytanie do testu ale rzuca błędem plus
-//    FIXME: check also testRepo to fix SQL Query there's some mistakes ALSO DELETE MODEL
-//    FIXME: HOW TO USE BETWEEN TABLE ??? 
     
     @RequestMapping(value = "/admin/test/{id}/addQuestion/{id2}", method = RequestMethod.POST)
     public ModelAndView addQuestion(@PathVariable("id") int id, @PathVariable("id2") int questionId) {
 
         ModelAndView modelAndView = new ModelAndView();
-        Test test = new Test();
-        test = testRepository.findAllById(id);
         System.out.println(questionId + "  i  " + " ->> " + id);
         testRepository.insertQuestion(questionId, id);
 
@@ -90,10 +84,31 @@ public class TestController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/admin/test/{id}/deleteQuestion/{id2}", method = RequestMethod.POST)
+    public ModelAndView deleteQuestion(@PathVariable("id") int id, @PathVariable("id2") int questionId) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        System.out.println(questionId + "  i  " + " ->> " + id);
+        testRepository.deleteQuestionFromTest(questionId, id);
+
+        modelAndView.setViewName("testAddQuestion");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/test/{id}/deleteQuestion/{id2}", method = RequestMethod.GET)
+    public ModelAndView afterDeleteQuestionTest() {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("testAddQuestion");
+        return modelAndView;
+    }
+
+
     @RequestMapping(value = "/admin/test/{id}/addQuestion{id2}", method = RequestMethod.GET)
     public ModelAndView aftereditTest() {
         ModelAndView modelAndView = new ModelAndView();
 
+        modelAndView.setViewName("testAddQuestion");
         return modelAndView;
     }
 

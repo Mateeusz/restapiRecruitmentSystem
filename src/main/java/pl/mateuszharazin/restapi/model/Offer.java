@@ -7,6 +7,7 @@ import org.checkerframework.checker.units.qual.C;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -44,8 +45,7 @@ public class Offer {
     @Column(name = "end_date")
     private java.sql.Date endDate;
 
-
-    @OneToOne(mappedBy = "offer")
-    private Application application;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "offer")
+    private Set<Application> applications;
 
 }

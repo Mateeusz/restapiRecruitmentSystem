@@ -27,18 +27,18 @@ public class Application {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "application_status_id")
     private ApplicationStatus applicationStatus;
 
     @OneToOne(mappedBy = "application")
     private ApplicationTest applicationTest;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "test_type_id")
     private TestType testType;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "job_offer_id")
     private Offer offer;
 
@@ -47,10 +47,10 @@ public class Application {
         this.cvAttachment = cv;
         this.user = user;
         this.offer = offer;
-        this.offer.setApplication(this);
+//        this.offer.setApplication(this);
         this.applicationStatus = applicationStatus;
-        this.applicationStatus.setApplication(this);
+//        this.applicationStatus.setApplication(this);
         this.testType = testType;
-        this.testType.setApplication(this);
+//        this.testType.setApplication(this);
     }
 }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -24,8 +25,8 @@ public class ApplicationStatus {
     @Column(name = "status_name")
     private String statusName;
 
-    @OneToOne(mappedBy = "applicationStatus")
-    private Application application;
+    @OneToMany(mappedBy = "applicationStatus", cascade = CascadeType.ALL)
+    private Set<Application> applications;
 
     public ApplicationStatus(String statusName) {
         this.statusName = statusName;

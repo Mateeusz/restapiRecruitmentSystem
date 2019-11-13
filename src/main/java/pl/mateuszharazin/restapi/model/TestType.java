@@ -34,7 +34,7 @@ public class TestType {
     @OneToMany(mappedBy = "testType", cascade = CascadeType.ALL)
     private Set<Test> tests;
 
-    @OneToOne(mappedBy = "testType")
-    private Application application;
+    @OneToMany(mappedBy = "testType", cascade = CascadeType.ALL)
+    private Set<Application> applications;
 
 }

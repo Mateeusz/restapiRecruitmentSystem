@@ -315,7 +315,7 @@ a.ytlink
 {
 
     float: left;
-    width: 830px;
+    width: 700px;
     margin: auto;
     margin-top: 20px;
     margin-left: 20px;
@@ -327,4 +327,16 @@ a.ytlink
     float: left;
     margin-top: 10px;
     padding-left: 50px;
+}
+
+.listButton
+{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #003366;
+    border-color: #003366;
+    font-size: large;
+    font-family: 'Josefin Sans';
+    color: #D3D3D3;
 }

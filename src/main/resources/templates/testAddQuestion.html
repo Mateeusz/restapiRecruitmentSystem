@@ -37,8 +37,8 @@
             <td th:text="${questionIn.option4}">Question option4</td>
             <td th:text="${questionIn.answer}">Question answer</td>
             <td>
-                <form th:action="@{'/admin/test/question/edit/'+${questionIn.id}}" method="GET" class="form-signin">
-                    <button type="Submit" > Details </button>
+                <form th:action="@{'/admin/test/'+${test.id}+'/deleteQuestion/'+${questionIn.id}}" method="POST" class="form-signin">
+                    <button type="Submit" > Delete </button>
                 </form>
             </td>
         </tr>
