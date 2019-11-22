@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -34,6 +35,10 @@ public class ApplicationTest {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private Application application;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "result_answer", joinColumns = @JoinColumn(name = "user_answer_id"), inverseJoinColumns = @JoinColumn(name = "test_result_id"))
+    private Set<UserAnswer> userAnswers;
 
     public ApplicationTest(int testScore, java.sql.Date solutionDate, Test test, Application application) {
         this.testScore = testScore;

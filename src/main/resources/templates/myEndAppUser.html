@@ -53,7 +53,7 @@
                 <div class="leftApplication" th:text="${app.offer.title}" />
 
                 <div class="rightApplication" >
-                    <form th:action="@{'/admin/application/'+${app.id}}" method="GET">
+                    <form th:action="@{'/home/get/'+${app.id}}" method="GET">
                         <button type="Submit" class="offerButton">SZCZEGÓŁY</button>
                     </form>
                 </div>

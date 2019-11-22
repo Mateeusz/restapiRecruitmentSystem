@@ -1,0 +1,147 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org"-->
+<!--      lang="PL">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>testUserGet</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div align="center">-->
+<!--    <h1>Lista pytań w teście</h1>-->
+
+<!--    <br/><br/>-->
+<!--    <table border="1" cellpadding="10">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>Question Body</th>-->
+<!--            <th>Question option1 </th>-->
+<!--            <th>Question option2 </th>-->
+<!--            <th>Question option3 </th>-->
+<!--            <th>Question option4 </th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="questionIn : ${questions}">-->
+<!--            <td th:text="${questionIn.id}">ID</td>-->
+<!--            <td th:text="${questionIn.questionBody}">Question Body</td>-->
+<!--            <td th:text="${questionIn.option1}">Question option1</td>-->
+<!--            <td th:text="${questionIn.option2}">Question option2</td>-->
+<!--            <td th:text="${questionIn.option3}">Question option3</td>-->
+<!--            <td th:text="${questionIn.option4}">Question option4</td>-->
+<!--            <td>-->
+<!--&lt;!&ndash;                <form th:action="@{'/admin/test/'+${test.id}+'/deleteQuestion/'+${questionIn.id}}" method="POST" class="form-signin">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button type="Submit" > Delete </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                </form>&ndash;&gt;-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--    <p th:text="${message}" />-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Rekrutacja</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetTemplate.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
+</head>
+<body>
+
+<div class = "container">
+
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
+    </div>
+
+    <div class="mainContainer">
+        <div class="menu">
+
+            <ol>
+                <li><a href="/home/offers">Oferty pracy</a></li>
+                <li><a href="">Twoje rekrutacje</a>
+                    <ul>
+                        <li><a href="/home/myApplications">Trwające</a></li>
+                        <li><a href="/home/myEndApplications">Zakończone</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Konto</a>
+                    <ul>
+                        <li><a href="/home/user/get">Szczegóły</a></li>
+                        <li><a href="/home/user/edit">Edycja</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+
+        </div>
+
+        <div>
+            <div class="offerTitle" th:text="'Test wiedzy na stanowisko'">  </div>
+            <div class="offerDate" th:text="${app.offer.title}"/>
+
+            <form>
+            <div th:each="questionIn : ${questions}">
+                <div class="question_body" th:text="${questionIn.questionBody}" />
+                <div class="question">
+                    <input class="option" style="color: dimgrey" th:name="${questionIn.id}" type="radio" th:text="'A: '+${questionIn.option1}"> <br>
+                    <input class="option" style="color: dimgrey" th:name="${questionIn.id}" type="radio" th:text="'B: '+${questionIn.option2}"> <br>
+                    <input class="option" style="color: dimgrey" th:name="${questionIn.id}" type="radio" th:text="'C: '+${questionIn.option3}"> <br>
+                    <input class="option" style="color: dimgrey" th:name="${questionIn.id}" type="radio" th:text="'D: '+${questionIn.option4}"> <br>
+                </div>
+            </div>
+
+            <!--            <div class="offerHeader" > Ilość vacatów </div>-->
+            <!--            <div class="offerDate" th:text="${offer.get().vacantNumber}" />-->
+            <!--            <p th:text="'offer: ' + ${offer.toString()}" />-->
+
+
+
+            <button type="Submit" class="applayButton">Wyślij odpowiedzi</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div id="footer">
+
+        <div id="foot">
+            Rekrutacja idealna! <br>
+            Wszelkie prawa zastrzeżone 2019<br/>
+            Created by Mateusz Harazin </div>
+        <a href="http://youtube.com" target="_blank" class="ytlink">
+            <div class="yt"><i class="icon-youtube"></i> </div>
+        </a>
+        <a href="http://facebook.com" target="_blank" class="ytlink">
+            <div class="fb"><i class="icon-facebook"></i></div>
+        </a>
+        <a href="http://twitter.com" target="_blank" class="ytlink">
+            <div class="tw"><i class="icon-twitter-bird"></i></div>
+        </a>
+        <a href="http://plus.google.com" target="_blank" class="ytlink">
+            <div class="gp"> <i class="icon-gplus"></i></div>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

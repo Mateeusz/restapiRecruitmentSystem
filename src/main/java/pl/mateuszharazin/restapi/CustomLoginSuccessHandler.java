@@ -31,14 +31,6 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         }
         RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
         redirectStrategy.sendRedirect(request, response, targetUrl);
-        System.out.println("-------------------------");
-        System.out.println(authentication.getName());
-        System.out.println(response.toString());
-        System.out.println(request.toString());
-        System.out.println("-------------------------");
-
-        Cookie cookie = new Cookie("email", authentication.getName().toString());
-        response.addCookie(cookie);
     }
 
     protected String determineTargetUrl(Authentication authentication) {

@@ -96,16 +96,30 @@ public class ApplicationController {
     }
 
     @RequestMapping(value = "/home/application/{id}", method = RequestMethod.GET)
-    ModelAndView getApplication(@PathVariable("id") int id) {
+    ModelAndView getApplication(@PathVariable("id") int applicationId) {
         ModelAndView modelAndView = new ModelAndView();
 
-        Application application1 = applicationRepository.findAllById(id);
-        modelAndView.addObject(applicationRepository.findAllById(id));
-        modelAndView.addObject("mmm", applicationRepository.findAllById(id));
+        modelAndView.addObject("app", applicationRepository.findById(applicationId));
+//        Application application1 = applicationRepository.findAllById(id);
+//        modelAndView.addObject(applicationRepository.findAllById(id));
+//        modelAndView.addObject("applicat", applicationRepository.findAllById(id));
         modelAndView.setViewName("getApp");
 
         return modelAndView;
     }
+
+//    @RequestMapping(value = "/home/myApp/{id}", method = RequestMethod.GET)
+//    ModelAndView selectMyApp(@PathVariable("id") int applicationId, Authentication authentication) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        Application application = applicationRepository.findAllById(applicationId);
+//        System.out.println(application.getUser().getFirstName());
+//        System.out.println(application.getOffer().getTitle());
+//
+//        modelAndView.addObject("offerName", application.getOffer().getTitle());
+//        modelAndView.addObject("application", application);
+//        modelAndView.setViewName("appli");
+//        return modelAndView;
+//    }
 
     @RequestMapping(value = "/home/myEndApplications", method = RequestMethod.GET)
     public ModelAndView myEndApplications(Authentication authentication) {

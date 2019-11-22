@@ -62,6 +62,7 @@ public class OffersController {
         return modelAndView;
     }
 
+
     @RequestMapping(value = "/home/getoffer", method = RequestMethod.POST)
     public ModelAndView getOfferById(@ModelAttribute Offer offer, Authentication authentication) {
 
@@ -115,7 +116,6 @@ public class OffersController {
         else {
             offerService.newOffer(offer);
             modelAndView.addObject("successMessage", "Offer has been added successfully!");
-            System.out.println("~Mat: Success! ---> " + offer.toString());
         }
         modelAndView.addObject("offer", new Offer());
         modelAndView.setViewName("offerForm"); // resources/template/offerForm.html
@@ -177,7 +177,7 @@ public class OffersController {
     }
 
     @RequestMapping(value = "/admin/delete/{id}", method = RequestMethod.DELETE)
-    public String deleteProduct(@PathVariable(name = "id") int id) {
+    public String deleteOffer(@PathVariable(name = "id") int id) {
         offerService.deleteOffer(id);
         return "offers";
     }

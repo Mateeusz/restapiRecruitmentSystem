@@ -1,19 +1,23 @@
 package pl.mateuszharazin.restapi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.mateuszharazin.restapi.model.Application;
 import pl.mateuszharazin.restapi.model.Question;
 import pl.mateuszharazin.restapi.model.Test;
-import pl.mateuszharazin.restapi.repository.QuestionRepository;
-import pl.mateuszharazin.restapi.repository.TestRepository;
-import pl.mateuszharazin.restapi.repository.TestTypeRepository;
+import pl.mateuszharazin.restapi.model.User;
+import pl.mateuszharazin.restapi.repository.*;
+import pl.mateuszharazin.restapi.service.ApplicationTestService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class TestController {
@@ -24,6 +28,13 @@ public class TestController {
     TestTypeRepository testTypeRepository;
     @Autowired
     QuestionRepository questionRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    ApplicationRepository applicationRepository;
+
+    @Autowired
+    ApplicationTestService applicationTestService;
 
     @RequestMapping(value = "/admin/test/create", method = RequestMethod.GET)
     public ModelAndView test() {
@@ -157,5 +168,59 @@ public class TestController {
 //            return modelAndView;
 //    }
 
+    @RequestMapping(value = "/home/test/resolve/before/{id}", method = RequestMethod.GET)
+    public ModelAndView beforeTest(@PathVariable("id") int applicationId, Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("appli", applicationRepository.findAllById(applicationId));
+        modelAndView.setViewName("beforeSeeTest");
+        return modelAndView;
+    }
 
+
+
+    @RequestMapping(value = "/home/test/resolve/{idApp}", method = RequestMethod.GET)
+    public ModelAndView getTestToSolve(@PathVariable("idApp") int applicationId, Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userRepository.findByEmail(authentication.getName());
+        Application application = applicationRepository.findAllById(applicationId);
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("app", application);
+
+        int testId = applicationTestService.insertNewResultRow(applicationId);
+
+        if(testId==0 || (user.getId()!=application.getUser().getId())) {
+            modelAndView.addObject("message", "Brak dostępu do testu we wskazanej aplikacji");
+        }
+        else if(testId > 0 && user.getId()==application.getUser().getId()){
+            modelAndView.addObject("questions", questionRepository.findAllByTests(testId));
+            modelAndView.addObject("message", "Test nr ");
+        }
+
+        modelAndView.setViewName("testUserGet");
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/home/get/{id}", method = RequestMethod.GET)
+    public ModelAndView fun(@PathVariable("id") int id, Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView();
+        Application application = applicationRepository.findAllById(id);
+        String buttonVar = "true";
+        System.out.println(application.getId());
+        System.out.println(application.getOffer().getTitle());
+//        System.out.println(application.getOffer().toString());
+        modelAndView.addObject("appId", id);
+        modelAndView.addObject("offerTitle", application.getOffer().getTitle());
+        modelAndView.addObject("appStatus", application.getApplicationStatus().getStatusName());
+        modelAndView.addObject("application", application);
+        if(application.getTestType() != null || application.getApplicationTest() != null) {
+            buttonVar = "false";
+        }
+
+        modelAndView.addObject("testButton", buttonVar);
+        modelAndView.setViewName("appli");
+
+
+        return modelAndView;
+    }
 }

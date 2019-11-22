@@ -28,23 +28,10 @@ public class AuthenticationController {
 
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public ModelAndView login() {
-        System.out.println("Był");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login"); // resources/template/login.html
         return modelAndView;
     }
-
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public ModelAndView sendCredentials(HttpServletResponse httpServletResponse, @ModelAttribute User user) {
-//        System.out.println("NIE BYŁ");
-//        ModelAndView modelAndView = new ModelAndView();
-//        System.out.println(user.getEmail());
-//        Cookie cookie = new Cookie("email", user.getEmail());
-//        httpServletResponse.addCookie(cookie);
-//        return modelAndView;
-//    }
-
-
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {

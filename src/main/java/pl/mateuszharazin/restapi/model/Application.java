@@ -17,40 +17,40 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "application_id")
-    private int id;
+     int id;
 
     @Column(name = "cv_attachment")
     @NotNull(message = "CV attachment is required!")
-    private String cvAttachment;
+     String cvAttachment;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+     User user;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "application_status_id")
-    private ApplicationStatus applicationStatus;
+     ApplicationStatus applicationStatus;
 
     @OneToOne(mappedBy = "application")
-    private ApplicationTest applicationTest;
+     ApplicationTest applicationTest;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "test_type_id")
-    private TestType testType;
+     TestType testType;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "job_offer_id")
-    private Offer offer;
+     Offer offer;
 
 
-    public Application(String cv, User user, Offer offer, ApplicationStatus applicationStatus, TestType testType) {
-        this.cvAttachment = cv;
-        this.user = user;
-        this.offer = offer;
-//        this.offer.setApplication(this);
-        this.applicationStatus = applicationStatus;
-//        this.applicationStatus.setApplication(this);
-        this.testType = testType;
-//        this.testType.setApplication(this);
-    }
+//    public Application(String cv, User user, Offer offer, ApplicationStatus applicationStatus, TestType testType) {
+//        this.cvAttachment = cv;
+//        this.user = user;
+//        this.offer = offer;
+////        this.offer.setApplication(this);
+//        this.applicationStatus = applicationStatus;
+////        this.applicationStatus.setApplication(this);
+//        this.testType = testType;
+////        this.testType.setApplication(this);
+//    }
 }

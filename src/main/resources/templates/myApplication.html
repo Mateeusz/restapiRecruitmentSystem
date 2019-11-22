@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" lang="PL">
 <head>
     <meta charset="UTF-8">
     <title>Rekrutacja</title>
 
     <link rel="stylesheet" type="text/css" href="/css/stylesheetTemplate.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
     <script src="/js/clientPage.js" defer></script>
@@ -46,17 +47,12 @@
         </div>
 
         <div>
-            <div class="singleOffer" th:each="offer : ${offerList}">
+            HELLO USER SITE!
+<!--            <div class="offerDate" th:text="${nnn.}" />-->
+<!--            <p th:text="${appli.}"/>-->
 
-                <div class="leftOffer" id="offer1left" th:text="${offer.title}" />
-                <div class="rightOffer" >
-                    <form th:action="@{'/home/offer/'+${offer.id}}" method="GET" class="form-signin">
-                        <button type="Submit" class="offerButton">SZCZEGÓŁY</button>
-                    </form>
-                </div>
-
-            </div>
-            </div>
+<!--            <p th:text="${user.getEmail()} "/>-->
+            <!--            <p th:text="'offer: ' + ${offer.toString()}" />-->
         </div>
 
     </div>

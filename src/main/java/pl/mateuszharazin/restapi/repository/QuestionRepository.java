@@ -15,6 +15,9 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     @Query(value = "SELECT * FROM question INNER JOIN question_test qt on question.question_id = qt.question_id WHERE test_id = :id", nativeQuery = true)
     public List<Question> findAllByTests(@Param("id") int id);
 
+    
+    @Query(value = "SELECT * FROM question INNER JOIN question_test qt on question.question_id = qt.question_id WHERE test_id = :id", nativeQuery = true)
+    public List<Question> findAllByApplication(@Param("id")int id);
 //    @Query(value = "INSERT INTO question_test VALUES ")
 
     public Question findAllById(int id);
