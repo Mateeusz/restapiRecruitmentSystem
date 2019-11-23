@@ -2,18 +2,22 @@ package pl.mateuszharazin.restapi.controllers;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import pl.mateuszharazin.restapi.model.Application;
-import pl.mateuszharazin.restapi.repository.ApplicationRepository;
-import pl.mateuszharazin.restapi.repository.ApplicationStatusRepository;
-import pl.mateuszharazin.restapi.repository.OfferRepository;
-import pl.mateuszharazin.restapi.repository.UserRepository;
+import pl.mateuszharazin.restapi.model.ApplicationStatus;
+import pl.mateuszharazin.restapi.repository.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.*;
 import java.util.ArrayList;
@@ -30,6 +34,8 @@ public class ApplicationController {
     ApplicationRepository applicationRepository;
     @Autowired
     ApplicationStatusRepository applicationStatusRepository;
+    @Autowired
+    TestTypeRepository testTypeRepository;
 
     @RequestMapping(value = "/apply/{id}", method = RequestMethod.GET)
     public ModelAndView applyForJob(@PathVariable(name = "id") int offerId, Authentication authentication) {
@@ -84,6 +90,9 @@ public class ApplicationController {
         return modelAndView;
     }
 
+
+
+
     @RequestMapping(value = "/home/myApplications", method = RequestMethod.GET)
     public ModelAndView myApplications(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView();
@@ -103,6 +112,41 @@ public class ApplicationController {
 //        Application application1 = applicationRepository.findAllById(id);
 //        modelAndView.addObject(applicationRepository.findAllById(id));
 //        modelAndView.addObject("applicat", applicationRepository.findAllById(id));
+        modelAndView.setViewName("getApp");
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/application/{id}", method = RequestMethod.GET)
+    public ModelAndView getApplicationAdmin(@PathVariable("id") int applicationId) {
+
+        ModelAndView modelAndView = new ModelAndView();
+//
+        Application application = applicationRepository.findAllById(applicationId);
+//        ApplicationTest applicationTest = applicationTestRepository.findByAppId(id);
+        String buttonVar = "true";
+        String isTestResult = "false";
+        System.out.println(application.getId());
+        System.out.println(application.getOffer().getTitle());
+//        System.out.println(application.getOffer().toString());
+        modelAndView.addObject("appId", applicationId);
+        modelAndView.addObject("offerTitle", application.getOffer().getTitle());
+        modelAndView.addObject("appStatus", application.getApplicationStatus().getStatusName());
+        modelAndView.addObject("cv", application.getCvAttachment());
+
+        modelAndView.addObject("isTestResult", isTestResult);
+
+        if(application.getTestType() != null || application.getApplicationTest() != null) {
+            buttonVar = "false";
+        }
+//        System.out.println(applicationTestRepository.findByAppId(id));
+//        if(applicationTestRepository.findTestScore(id) >= 0) {
+//            modelAndView.addObject("result", applicationTestRepository.findTestScore(id));
+//            isTestResult = "true";
+//            modelAndView.addObject("questionsQuan", questionRepository.findAllByTests(applicationTestRepository.findTestId(id)).size());
+//        }
+
+        modelAndView.addObject("testButton", buttonVar);
         modelAndView.setViewName("getApp");
 
         return modelAndView;
@@ -181,6 +225,41 @@ public class ApplicationController {
         return "ok!";
     }
 
+    @RequestMapping(value = "/admin/applications/change/{id}", method = RequestMethod.GET)
+    public ModelAndView changeStatus(@PathVariable("id") int applicationId) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("appli", applicationRepository.findAllById(applicationId));
+        modelAndView.addObject("statuses", applicationStatusRepository.findAll());
+        modelAndView.setViewName("changeAppStatus");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/admin/applications/change/{id}", method = RequestMethod.POST)
+    public ModelAndView createTest(@ModelAttribute Application appli,
+                                   BindingResult bindingResult, ModelMap modelMap,
+                                   @PathVariable("id") int applicationId) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("appli", applicationRepository.findAllById(applicationId));
+        modelAndView.addObject("statuses", applicationStatusRepository.findAll());
+
+        if(bindingResult.hasErrors()) {
+            modelAndView.addObject("successMessage", "Please correct the errors in form!");
+            modelMap.addAttribute("bindingResult", bindingResult);
+        }
+        else {
+            applicationRepository.changeAppStatus(appli.getApplicationStatus().getId(), applicationId);
+            modelAndView.addObject("successMessage", "Status has been updated successfully!");
+        }
+
+
+        modelAndView.setViewName("testList");
+
+
+        return modelAndView;
+    }
 
 
 }

@@ -2,20 +2,20 @@ package pl.mateuszharazin.restapi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import pl.mateuszharazin.restapi.model.Application;
-import pl.mateuszharazin.restapi.model.Question;
-import pl.mateuszharazin.restapi.model.Test;
-import pl.mateuszharazin.restapi.model.User;
+import pl.mateuszharazin.restapi.model.*;
 import pl.mateuszharazin.restapi.repository.*;
 import pl.mateuszharazin.restapi.service.ApplicationTestService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -32,6 +32,10 @@ public class TestController {
     UserRepository userRepository;
     @Autowired
     ApplicationRepository applicationRepository;
+    @Autowired
+    UserAnswerRepository userAnswerRepository;
+    @Autowired
+    ApplicationTestRepository applicationTestRepository;
 
     @Autowired
     ApplicationTestService applicationTestService;
@@ -183,8 +187,10 @@ public class TestController {
         ModelAndView modelAndView = new ModelAndView();
         User user = userRepository.findByEmail(authentication.getName());
         Application application = applicationRepository.findAllById(applicationId);
+        List<UserAnswer> results = new ArrayList<>();
         modelAndView.addObject("user", user);
         modelAndView.addObject("app", application);
+        modelAndView.addObject("results", results);
 
         int testId = applicationTestService.insertNewResultRow(applicationId);
 
@@ -200,22 +206,56 @@ public class TestController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/home/test/resolve/{idApp}", method = RequestMethod.POST)
+    public ModelAndView computeAnswers(HttpServletRequest request, @PathVariable("idApp") int applicationId) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        int score = 0;
+        String []questionsIds = request.getParameterValues("questionId");
+        for (String q:questionsIds) {
+            Question question = questionRepository.findAllById(Integer.parseInt(q));
+
+            System.out.println("----------> " + Integer.parseInt(q));
+            System.out.println(request.getParameter(q));
+            System.out.println(question.getAnswer());
+            if(request.getParameter(q).equals(question.getAnswer())) {
+                score++;
+            }
+
+        }
+        System.out.println(applicationId + "  i  " + score);
+        applicationTestRepository.updateAfterTest(applicationId, score);
+
+        modelAndView.setViewName("testResult");
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/home/get/{id}", method = RequestMethod.GET)
     public ModelAndView fun(@PathVariable("id") int id, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView();
         Application application = applicationRepository.findAllById(id);
+//        ApplicationTest applicationTest = applicationTestRepository.findByAppId(id);
         String buttonVar = "true";
+        String isTestResult = "false";
         System.out.println(application.getId());
         System.out.println(application.getOffer().getTitle());
 //        System.out.println(application.getOffer().toString());
         modelAndView.addObject("appId", id);
         modelAndView.addObject("offerTitle", application.getOffer().getTitle());
         modelAndView.addObject("appStatus", application.getApplicationStatus().getStatusName());
-        modelAndView.addObject("application", application);
+        modelAndView.addObject("cv", application.getCvAttachment());
+
+        modelAndView.addObject("isTestResult", isTestResult);
+
         if(application.getTestType() != null || application.getApplicationTest() != null) {
             buttonVar = "false";
         }
+//        System.out.println(applicationTestRepository.findByAppId(id));
+//        if(applicationTestRepository.findTestScore(id) >= 0) {
+//            modelAndView.addObject("result", applicationTestRepository.findTestScore(id));
+//            isTestResult = "true";
+//            modelAndView.addObject("questionsQuan", questionRepository.findAllByTests(applicationTestRepository.findTestId(id)).size());
+//        }
 
         modelAndView.addObject("testButton", buttonVar);
         modelAndView.setViewName("appli");

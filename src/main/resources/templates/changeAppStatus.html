@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <title>Rekrutacja</title>
 
+    <link rel="stylesheet" type="text/css" href="/Users/mateusz/Documents/GitHub/restapiRecruitmentSystem/src/main/resources/static/css/stylesheetAdmin.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
     <link rel="stylesheet" type="text/css" href="/css/stylesheetAdmin.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetForm.css"/>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
     <script src="/js/clientPage.js" defer></script>
 
@@ -54,11 +59,39 @@
         </div>
 
         <div>
-            HELLO USER SITE!
-            <p th:text="${user.firstName} + ' ' + ${user.lastName}"/>
+            <form th:action="@{'/admin/applications/change/'+${appli.id}}" th:object="${appli}" method="post">
+                <div class="offerTitle" text="Edytuj status aplikacji"> Edytuj status aplikacji  </div>
 
-            <p th:text="${user.getEmail()} "/>
-            <!--            <p th:text="'offer: ' + ${offer.toString()}" />-->
+                <br> <div class="labelTitle" >Status: </div>
+                <div>
+                    <input type="text" th:field="*{applicationStatus}" placeholder="Status" class="label" />
+                </div>
+<!--                <br> <div class="labelTitle" >Pensja min.: </div>-->
+<!--                <div>-->
+<!--                    <input type="text" th:field="*{option1}" placeholder="Wariant 1" class="label" />-->
+<!--                </div>-->
+<!--                <br> <div class="labelTitle" >Opis: </div>-->
+<!--                <div>-->
+<!--                    <input type="text" th:field="*{option2}" placeholder="Wariant 2" class="label" />-->
+<!--                </div>-->
+<!--                <br> <div class="labelTitle" >Wymagania: </div>-->
+<!--                <div>-->
+<!--                    <input type="text" th:field="*{option3}" placeholder="Wariant 3" class="label" />-->
+<!--                </div>-->
+<!--                <br> <div class="labelTitle" >Vacaty: </div>-->
+<!--                <div>-->
+<!--                    <input type="text" th:field="*{option4}" placeholder="Wariant 4" class="label" />-->
+<!--                </div>-->
+<!--                <br> <div class="labelTitle" >Data zakończenia: </div>-->
+<!--                <div>-->
+<!--                    <input type="text" th:field="*{answer}" placeholder="Odpowiedź" class="label" />-->
+<!--                </div>-->
+                <div>
+
+                    <button type="submit" class="buttonSubmit">Edytuj</button>
+                </div>
+<!--                <span th:utext="${successMessage}"></span>-->
+            </form>
         </div>
 
     </div>

@@ -123,14 +123,14 @@ public class OffersController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/home/deleteoffer", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/deleteoffer", method = RequestMethod.GET)
     public ModelAndView deleteOffer() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("deleteofferinput");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/home/deleteoffer", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/deleteoffer", method = RequestMethod.POST)
     public ModelAndView deleteOfferById(@ModelAttribute Offer offer) {
 
         ModelAndView modelAndView = new ModelAndView();

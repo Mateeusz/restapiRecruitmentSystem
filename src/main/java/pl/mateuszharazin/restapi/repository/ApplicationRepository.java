@@ -1,10 +1,12 @@
 package pl.mateuszharazin.restapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pl.mateuszharazin.restapi.model.Application;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
@@ -35,4 +37,11 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
             "FROM application\n" +
             "WHERE application_status_id = 1;" , nativeQuery = true)
     public List<Application> endedApplications();
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE application SET application_status_id = :statusId WHERE application_id = :appId;", nativeQuery = true)
+    public void changeAppStatus(@Param("statusId") int statusId, @Param("appId") int applicationId);
+
 }

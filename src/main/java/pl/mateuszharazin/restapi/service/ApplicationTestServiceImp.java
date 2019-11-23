@@ -63,24 +63,17 @@ public class ApplicationTestServiceImp implements ApplicationTestService{
         return testId;
     }
 
-    public void updateResults(int applicationId) {
+    public void updateResults(int applicationId, int testScore) {
 
 
-        List<Question> questions = questionRepository.findAllByTests(applicationTestRepository.findTestId(applicationId));
+//        List<Question> questions = questionRepository.findAllByTests(applicationTestRepository.findTestId(applicationId));
+//
+//        List<UserAnswer> userAnswers = new ArrayList<>();
+//        for(Question question : questions) {
+//            userAnswers.add(userAnswerRepository.findByQuestion(question.getId()));
+//        }
 
-        List<UserAnswer> userAnswers = new ArrayList<>();
-        for(Question question : questions) {
-            userAnswers.add(userAnswerRepository.findByQuestion(question.getId()));
-        }
 
-        if(userAnswers.size() == 0) {
-            applicationTestRepository.updateAfterTest(applicationId, 0);
-        }
-        else if(userAnswers.size() > 0) {
-            int score = 0;
-
-            applicationTestRepository.updateAfterTest(applicationId, score);
-        }
     }
 
 }

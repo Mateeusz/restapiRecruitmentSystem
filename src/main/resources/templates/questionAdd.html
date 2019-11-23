@@ -1,58 +1,122 @@
 <!DOCTYPE html>
-<html lang="PL" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="PL">
 <head>
     <meta charset="UTF-8">
-    <title>Add new Question</title>
+    <title>Rekrutacja</title>
+
+    <link rel="stylesheet" type="text/css" href="/Users/mateusz/Documents/GitHub/restapiRecruitmentSystem/src/main/resources/static/css/stylesheetAdmin.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetAdmin.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetForm.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
 </head>
 <body>
-<body style="background-color: #ededed;">
-<div style="background-color: #337ab7; height: 50px;"></div>
-<div class="container-fluid" style="margin-top: 30px;">
-    <form th:action="@{'/admin/test/question/list'}" method="GET" class="form-signin">
-        <button type="Submit" > Back </button>
-    </form>
-    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
-        <form autocomplete="off" action="#" th:action="@{'/admin/test/question/add'}" th:object="${question}" method="post" class="form-signin" role="form">
-            <h3 class="form-signin-heading">Add New Offer</h3>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{questionBody}" placeholder="Tytuł" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{option1}" placeholder="Option 1 " class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{option2}" placeholder="Option 2 " class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{option3}" placeholder="Option 3 " class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{option4}" placeholder="Option 4  " class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <input type="text" th:field="*{answer}" placeholder="Answer" class="form-control" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="">
-                    <button type="submit" class="btn btn-primary btn-block">ADD question</button>
-                </div>
-            </div>
-            <span th:utext="${successMessage}"></span>
-        </form>
+
+<div class = "container">
+
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
     </div>
+
+    <div class="mainContainer">
+        <div class="menu">
+            <ol>
+                <li><a href="/admin/offers">Oferty pracy</a>
+                    <ul>
+                        <li><a href="admin/offers/add">Dodaj</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/admin/applications">Rekrutacje</a>
+                    <ul>
+                        <li><a href="/admin/applications/ended">Trwające</a></li>
+                        <li><a href="/admin/applications">Zakończone</a></li>
+                    </ul>
+                </li>
+                <li><a href="/admin/test/list">Testy</a>
+                    <ul>
+                        <li><a href="/admin/test/create">Dodaj</a></li>
+                    </ul>
+                </li>
+                <li><a href="/home/user/get">Konto</a>
+                    <ul>
+                        <li><a href="/home/user/get">Szczegóły</a></li>
+                        <li><a href="/home/user/edit">Edycja</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <form th:action="@{'/admin/test/question/add'}" th:object="${question}" method="post">
+                <div class="offerTitle" text="Dodaj nowe pytanie "> Dodaj nowe pytanie  </div>
+
+                <br> <div class="labelTitle" >Tytuł: </div>
+                <div>
+                    <input type="text" th:field="*{questionBody}" placeholder="Treść" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Pensja min.: </div>
+                <div>
+                    <input type="text" th:field="*{option1}" placeholder="Wariant 1" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Opis: </div>
+                <div>
+                    <input type="text" th:field="*{option2}" placeholder="Wariant 2" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Wymagania: </div>
+                <div>
+                    <input type="text" th:field="*{option3}" placeholder="Wariant 3" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Vacaty: </div>
+                <div>
+                    <input type="text" th:field="*{option4}" placeholder="Wariant 4" class="label" />
+                </div>
+                <br> <div class="labelTitle" >Data zakończenia: </div>
+                <div>
+                    <input type="text" th:field="*{answer}" placeholder="Odpowiedź" class="label" />
+                </div>
+                <div>
+
+                    <button type="submit" class="buttonSubmit">Dodaj</button>
+                </div>
+                <span th:utext="${successMessage}"></span>
+            </form>
+        </div>
+
+    </div>
+
+    <div id="footer">
+
+        <div id="foot">
+            Rekrutacja idealna! <br>
+            Wszelkie prawa zastrzeżone 2019<br/>
+            Created by Mateusz Harazin </div>
+        <a href="http://youtube.com" target="_blank" class="ytlink">
+            <div class="yt"><i class="icon-youtube"></i> </div>
+        </a>
+        <a href="http://facebook.com" target="_blank" class="ytlink">
+            <div class="fb"><i class="icon-facebook"></i></div>
+        </a>
+        <a href="http://twitter.com" target="_blank" class="ytlink">
+            <div class="tw"><i class="icon-twitter-bird"></i></div>
+        </a>
+        <a href="http://plus.google.com" target="_blank" class="ytlink">
+            <div class="gp"> <i class="icon-gplus"></i></div>
+        </a>
+    </div>
+
 </div>
-</body>
+
 </body>
 </html>

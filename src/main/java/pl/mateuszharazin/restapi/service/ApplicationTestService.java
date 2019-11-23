@@ -6,5 +6,5 @@ import pl.mateuszharazin.restapi.repository.ApplicationTestRepository;
 public interface ApplicationTestService {
 
     public int insertNewResultRow(int applicationId);
-    public void updateResults(int applicationId);
+    public void updateResults(int applicationId, int testScore);
 }

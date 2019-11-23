@@ -3,35 +3,103 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Tests</title>
+    <title>Rekrutacja</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetTemplate.css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
 </head>
 <body>
-<div align="center">
-    <h1>Test List</h1>
-    <a href="/admin/test/create">Create New Test</a>
-    <br/><br/>
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>TestTypeName</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="test : ${tests}">
-            <td th:text="${test.id}">ID</td>
-            <td th:text="${test.name}">Name</td>
-            <td th:text="${test.testType.testTypeName}">TestTypeName</td>
-            <td>
-                <form th:action="@{'/admin/test/get/'+${test.id}}" method="GET" class="form-signin">
-                    <button type="Submit" > Details </button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+<div class = "container">
+
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
+    </div>
+
+    <div class="mainContainer">
+        <div class="menu">
+            <ol>
+                <li><a href="/admin/offers">Oferty pracy</a>
+                    <ul>
+                        <li><a href="admin/offers/add">Dodaj</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/admin/applications">Rekrutacje</a>
+                    <ul>
+                        <li><a href="/admin/applications/ended">Trwające</a></li>
+                        <li><a href="/admin/applications">Zakończone</a></li>
+                    </ul>
+                </li>
+                <li><a href="/admin/test/list">Testy</a>
+                    <ul>
+                        <li><a href="/admin/test/create">Dodaj</a></li>
+                    </ul>
+                </li>
+                <li><a href="/home/user/get">Konto</a>
+                    <ul>
+                        <li><a href="/home/user/get">Szczegóły</a></li>
+                        <li><a href="/home/user/edit">Edycja</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <div class="singleOffer" th:each="test : ${tests}">
+
+                <div class="leftOffer" id="offer1left" th:text="${test.name}+' - '+${test.testType.testTypeName}" />
+                <div class="rightOffer" >
+                    <form th:action="@{'/admin/test/get/'+${test.id}}" method="GET" class="form-signin">
+                        <button type="Submit" class="offerButton">SZCZEGÓŁY</button>
+                    </form>
+
+                    <!--                    <input type="button" class="offerButton" value="SZCZEGÓŁY">-->
+                    <!--                    <input type="button" class="offerButton" value="APLIKUJ">-->
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
 </div>
+
+<div id="footer">
+
+    <div id="foot">
+        Rekrutacja idealna! <br>
+        Wszelkie prawa zastrzeżone 2019<br/>
+        Created by Mateusz Harazin </div>
+    <a href="http://youtube.com" target="_blank" class="ytlink">
+        <div class="yt"><i class="icon-youtube"></i> </div>
+    </a>
+    <a href="http://facebook.com" target="_blank" class="ytlink">
+        <div class="fb"><i class="icon-facebook"></i></div>
+    </a>
+    <a href="http://twitter.com" target="_blank" class="ytlink">
+        <div class="tw"><i class="icon-twitter-bird"></i></div>
+    </a>
+    <a href="http://plus.google.com" target="_blank" class="ytlink">
+        <div class="gp"> <i class="icon-gplus"></i></div>
+    </a>
+</div>
+
+</div>
+
 </body>
 </html>
+
+
+

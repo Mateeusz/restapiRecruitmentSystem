@@ -29,37 +29,34 @@
         </div>
     </div>
 
-    <div class="mainContainer">
-        <div class="menu">
+    <div class="menu">
+        <ol>
+            <li><a href="/admin/offers">Oferty pracy</a>
+                <ul>
+                    <li><a href="admin/offers/add">Dodaj</a></li>
+                </ul>
+            </li>
 
-            <ol>
-                <li><a href="/admin/offers">Oferty pracy</a>
-                    <ul>
-                        <li><a href="#">text</a></li>
-                        <li><a href="#">text</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Rekrutacje</a>
-                    <ul>
-                        <li><a href="#">Trwające</a></li>
-                        <li><a href="#">Zakończone</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Testy</a>
-                    <ul>
-                        <li><a href="#">text</a></li>
-                        <li><a href="#">text</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Konto</a>
-                    <ul>
-                        <li><a href="/home/user/get">Szczegóły</a></li>
-                        <li><a href="/home/user/edit">Edycja</a></li>
-                        <li><a href="/logout">Wyloguj</a></li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
+            <li><a href="/admin/applications">Rekrutacje</a>
+                <ul>
+                    <li><a href="/admin/applications/ended">Trwające</a></li>
+                    <li><a href="/admin/applications">Zakończone</a></li>
+                </ul>
+            </li>
+            <li><a href="/admin/test/list">Testy</a>
+                <ul>
+                    <li><a href="/admin/test/create">Dodaj</a></li>
+                </ul>
+            </li>
+            <li><a href="/home/user/get">Konto</a>
+                <ul>
+                    <li><a href="/home/user/get">Szczegóły</a></li>
+                    <li><a href="/home/user/edit">Edycja</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
+                </ul>
+            </li>
+        </ol>
+    </div>
 
         <div>
             <form th:action="@{'/admin/offer/edit/'+${offer.getId()}}" th:object="${offer}" method="post">

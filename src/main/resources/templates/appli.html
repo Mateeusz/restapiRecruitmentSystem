@@ -67,12 +67,23 @@
 
 
             <div th:switch="${testButton}">
-                <button type="submit" class="testButton" th:case="'true'" disabled>Rozwiąż test</button>
+                <button type="submit" class="testButton" th:case="true" disabled>Rozwiąż test</button>
                 <form th:action="@{'/home/test/resolve/before/'+${id}}" method="GET" class="form-signin">
                     <button type="submit" class="testButton" th:case="*" >Rozwiąż test</button>
                 </form>
+
             </div>
 
+<!--            <div th:switch="${isTestResult}">-->
+<!--                <div class="offerHeader" th:case="false"></div>-->
+<!--                <div class="offerHeader" th:case="true">-->
+<!--                    <div class="offerDate" th:text="'Wynik: '+${result}+' z '+${questionsQuan}" />-->
+<!--                </div>-->
+
+<!--            </div>-->
+
+            <div class="offerHeader">CV</div>
+            <div class="offerDate" th:text="${cv}" />
 <!--            <div th:switch="${testButton}">-->
 <!--                <button type="submit" class="applayButton" th:case="'true' disabled>Rozwiąż test</button>-->
 <!--                <button type="submit" class="applayButton" th:case="'false'">Rozwiąż test</button>-->

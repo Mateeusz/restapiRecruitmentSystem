@@ -47,4 +47,7 @@ public class Question {
     @JoinTable(name = "question_test", joinColumns = @JoinColumn(name = "test_id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
     private Set<Test> tests;
 
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private Set<UserAnswer> userAnswers;
+
 }

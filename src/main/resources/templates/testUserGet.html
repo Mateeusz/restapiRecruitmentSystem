@@ -97,14 +97,15 @@
             <div class="offerTitle" th:text="'Test wiedzy na stanowisko'">  </div>
             <div class="offerDate" th:text="${app.offer.title}"/>
 
-            <form>
-            <div th:each="questionIn : ${questions}">
-                <div class="question_body" th:text="${questionIn.questionBody}" />
+            <form th:action="@{'/home/test/resolve/'+${app.id}}" commandName="results" method="POST">
+            <div th:each="question : ${questions}">
+                <div class="question_body" th:text="${question.questionBody}" />
                 <div class="question">
-                    <input class="option" style="color: dimgrey" th:name="${questionIn.id}" type="radio" th:text="'A: '+${questionIn.option1}"> <br>
-                    <input class="option" style="color: dimgrey" th:name="${questionIn.id}" type="radio" th:text="'B: '+${questionIn.option2}"> <br>
-                    <input class="option" style="color: dimgrey" th:name="${questionIn.id}" type="radio" th:text="'C: '+${questionIn.option3}"> <br>
-                    <input class="option" style="color: dimgrey" th:name="${questionIn.id}" type="radio" th:text="'D: '+${questionIn.option4}"> <br>
+                    <input type="hidden" name="questionId" th:value="${question.id}">
+                    <input type="radio" class="option" style="color: dimgrey" th:name="${question.id}" th:text="'A: '+${question.option1}" th:value="${question.option1}"> <br>
+                    <input type="radio" class="option" style="color: dimgrey" th:name="${question.id}" th:text="'B: '+${question.option2}" th:value="${question.option2}"> <br>
+                    <input type="radio" class="option" style="color: dimgrey" th:name="${question.id}" th:text="'C: '+${question.option3}" th:value="${question.option3}"> <br>
+                    <input type="radio" class="option" style="color: dimgrey" th:name="${question.id}" th:text="'D: '+${question.option4}" th:value="${question.option4}"> <br>
                 </div>
             </div>
 

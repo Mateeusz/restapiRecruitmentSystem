@@ -6,6 +6,7 @@
     <title>Rekrutacja</title>
 
     <link rel="stylesheet" type="text/css" href="/css/stylesheetAdmin.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetOffers.css"/>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
     <script src="/js/clientPage.js" defer></script>
 
@@ -54,11 +55,50 @@
         </div>
 
         <div>
-            HELLO USER SITE!
-            <p th:text="${user.firstName} + ' ' + ${user.lastName}"/>
 
-            <p th:text="${user.getEmail()} "/>
-            <!--            <p th:text="'offer: ' + ${offer.toString()}" />-->
+            <div>
+                <div>
+
+                    <div class="offerTitle" text="Dodaj nowy test"> Rozmowa rekrutacyjna  </div>
+                    <form th:action="@{'/admin/test/addType'}" method="GET">
+                        <button type="Submit" class="buttonForm">Dodaj nowy typ testu</button>
+                    </form>
+
+                    <div class="offerHeader" th> </div>
+                    <div>
+                        <form th:action="@{/admin/test/create}" th:object="${test}" method="post" >
+
+
+
+
+                            <br> <div class="labelTitle" >Tytuł: </div>
+                            <div>
+                                <input type="text" class="label" th:field="*{name}" placeholder="Tytuł" />
+                            </div>
+
+                            <br> <div class="labelTitle" >Typ testu: </div>
+                            <div>
+                                <input type="text" class="label" th:field="*{testType}" list="testTypeList"/>
+                                <datalist id = "testTypeList">
+                                    <option class="label" th:each="testType : ${testTypes}" th:value = "${testType.id}" th:text="${testType.testTypeName}">
+                                </datalist>
+                            </div>
+                            <div>
+                                <div>
+
+                                    <button type="submit" class="buttonSubmit">Dodaj</button>
+                                </div>
+                            </div>
+                            <!--            <span th:utext="${successMessage}"></span>-->
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
         </div>
 
     </div>

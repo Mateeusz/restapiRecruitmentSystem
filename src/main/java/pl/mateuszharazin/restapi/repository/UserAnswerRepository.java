@@ -20,4 +20,10 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer, Integer>
 //    @Transactional
 //    @Query(value = "", nativeQuery = true)
 //    public void save
+
+    @Modifying
+    @Query(value = "INSERT INTO user_answer (answer_option, question_id) VALUES (:user_answer_option, :question_id)" +
+            "INSERT INTO result_answer (test_result_id, user_answer_id) VALUES (:test_id, SELECT lastval() FROM user_answer);", nativeQuery = true)
+    @Transactional
+    public void saveInResultAnswer(@Param("test_id") int testId, @Param("user_answer_option") String userAnswerOption, @Param("question_id") int questionId);
 }

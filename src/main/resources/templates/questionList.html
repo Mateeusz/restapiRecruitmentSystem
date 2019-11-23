@@ -1,44 +1,149 @@
 <!DOCTYPE html>
-<html lang="PL" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Question List</title>
+    <title>Rekrutacja</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/stylesheetTemplate.css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+    <script src="/js/clientPage.js" defer></script>
+
 </head>
 <body>
-<div align="center">
-    <h1>Test List</h1>
-    <a href="/admin/test/question/add">Add New Question</a>
-    <br/><br/>
-    <table border="1" cellpadding="10">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Question Body</th>
-            <th>Question option1 </th>
-            <th>Question option2 </th>
-            <th>Question option3 </th>
-            <th>Question option4 </th>
-            <th>Question answer </th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="question : ${questions}">
-            <td th:text="${question.id}">ID</td>
-            <td th:text="${question.questionBody}">Question Body</td>
-            <td th:text="${question.option1}">Question option1</td>
-            <td th:text="${question.option2}">Question option2</td>
-            <td th:text="${question.option3}">Question option3</td>
-            <td th:text="${question.option4}">Question option4</td>
-            <td th:text="${question.answer}">Question answer</td>
-            <td>
-                <form th:action="@{'/admin/test/question/edit/'+${question.id}}" method="GET" class="form-signin">
-                    <button type="Submit" > Details </button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+<div class = "container">
+
+    <div class="header">
+        <div class="title">
+            <a href="/home" class="ytlink"> Rekrutacja idealna! </a>
+        </div>
+        <div class="motto">
+            <p>znajdz pracę idealną!</p>
+        </div>
+    </div>
+
+    <div class="mainContainer">
+        <div class="menu">
+            <ol>
+                <li><a href="/admin/offers">Oferty pracy</a>
+                    <ul>
+                        <li><a href="admin/offers/add">Dodaj</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/admin/applications">Rekrutacje</a>
+                    <ul>
+                        <li><a href="/admin/applications/ended">Trwające</a></li>
+                        <li><a href="/admin/applications">Zakończone</a></li>
+                    </ul>
+                </li>
+                <li><a href="/admin/test/list">Testy</a>
+                    <ul>
+                        <li><a href="/admin/test/create">Dodaj</a></li>
+                    </ul>
+                </li>
+                <li><a href="/home/user/get">Konto</a>
+                    <ul>
+                        <li><a href="/home/user/get">Szczegóły</a></li>
+                        <li><a href="/home/user/edit">Edycja</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <div class="singleOffer" th:each="question : ${questions}">
+
+                <div class="leftOffer" id="offer1left" style="font-size: 20px" th:text="${question.questionBody}" />
+                <div class="rightOffer" >
+                    <form th:action="@{'/admin/test/question/edit/'+${question.id}}" method="GET" class="form-signin">
+                        <button type="Submit" class="offerButton">EDYTUJ</button>
+                    </form>
+
+                    <!--                    <input type="button" class="offerButton" value="SZCZEGÓŁY">-->
+                    <!--                    <input type="button" class="offerButton" value="APLIKUJ">-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
+
+<div id="footer">
+
+    <div id="foot">
+        Rekrutacja idealna! <br>
+        Wszelkie prawa zastrzeżone 2019<br/>
+        Created by Mateusz Harazin </div>
+    <a href="http://youtube.com" target="_blank" class="ytlink">
+        <div class="yt"><i class="icon-youtube"></i> </div>
+    </a>
+    <a href="http://facebook.com" target="_blank" class="ytlink">
+        <div class="fb"><i class="icon-facebook"></i></div>
+    </a>
+    <a href="http://twitter.com" target="_blank" class="ytlink">
+        <div class="tw"><i class="icon-twitter-bird"></i></div>
+    </a>
+    <a href="http://plus.google.com" target="_blank" class="ytlink">
+        <div class="gp"> <i class="icon-gplus"></i></div>
+    </a>
+</div>
+
+</div>
+
 </body>
 </html>
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="PL" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Question List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div align="center">-->
+<!--    <h1>Test List</h1>-->
+<!--    <a href="/admin/test/question/add">Add New Question</a>-->
+<!--    <br/><br/>-->
+<!--    <table border="1" cellpadding="10">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>Question Body</th>-->
+<!--            <th>Question option1 </th>-->
+<!--            <th>Question option2 </th>-->
+<!--            <th>Question option3 </th>-->
+<!--            <th>Question option4 </th>-->
+<!--            <th>Question answer </th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="question : ${questions}">-->
+<!--            <td th:text="${question.id}">ID</td>-->
+<!--            <td th:text="${question.questionBody}">Question Body</td>-->
+<!--            <td th:text="${question.option1}">Question option1</td>-->
+<!--            <td th:text="${question.option2}">Question option2</td>-->
+<!--            <td th:text="${question.option3}">Question option3</td>-->
+<!--            <td th:text="${question.option4}">Question option4</td>-->
+<!--            <td th:text="${question.answer}">Question answer</td>-->
+<!--            <td>-->
+<!--                <form th:action="@{'/admin/test/question/edit/'+${question.id}}" method="GET" class="form-signin">-->
+<!--                    <button type="Submit" > Details </button>-->
+<!--                </form>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

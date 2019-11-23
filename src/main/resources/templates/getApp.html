@@ -26,43 +26,77 @@
     </div>
 
     <div class="mainContainer">
-        <div class="menu">
+        <div class="mainContainer">
+            <div class="menu">
+                <ol>
+                    <li><a href="/admin/offers">Oferty pracy</a>
+                        <ul>
+                            <li><a href="admin/offers/add">Dodaj</a></li>
+                        </ul>
+                    </li>
 
-            <ol>
-                <li><a href="/home/offers">Oferty pracy</a></li>
-                <li><a href="#">Twoje rekrutacje</a>
-                    <ul>
-                        <li><a href="/home/myApplications">Trwające</a></li>
-                        <li><a href="/home/myEndApplications">Zakończone</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Konto</a>
-                    <ul>
-                        <li><a href="/home/user/get">Szczegóły</a></li>
-                        <li><a href="/home/user/edit">Edycja</a></li>
-                        <li><a href="/logout">Wyloguj</a></li>
-                    </ul>
-                </li>
-            </ol>
-
-        </div>
+                    <li><a href="/admin/applications">Rekrutacje</a>
+                        <ul>
+                            <li><a href="/admin/applications/ended">Trwające</a></li>
+                            <li><a href="/admin/applications">Zakończone</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/admin/test/list">Testy</a>
+                        <ul>
+                            <li><a href="/admin/test/create">Dodaj</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/home/user/get">Konto</a>
+                        <ul>
+                            <li><a href="/home/user/get">Szczegóły</a></li>
+                            <li><a href="/home/user/edit">Edycja</a></li>
+                            <li><a href="/logout">Wyloguj</a></li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
 
         <div>
 
-            <div class="offerDate" th:text="'lala: ' + ${}" />
-<!--            <div class="offerDate" th:text="${}" />-->
-<!--            <div class="offerTitle" th:text="${app}" />-->
-<!--            <div class="offerDate" th:text="'Data zakończenia: ' + ${app.get().endDate}"/>-->
-<!--            <div class="offerHeader" > Opis </div>-->
-<!--            <div class="offerDate" th:text="${offer.get().description}"/>-->
-<!--            <div class="offerHeader" > Wymagania </div>-->
-<!--            <div class="offerDate" th:text="${offer.get().requirements}" />-->
-<!--            <div class="offerHeader" > Wynagrodzenie </div>-->
-<!--            <div class="offerDate" th:text="${offer.get().salary} + ' PLN miesięcznie'" />-->
-<!--            <div class="offerHeader" > Ilość vacatów </div>-->
-<!--            <div class="offerDate" th:text="${offer.get().vacantNumber}" />-->
-<!--                        <p th:text="'offer: ' + ${offer.toString()}" />-->
+            <!--            <div class="offerDate" th:text="'lala: ' + ${}" />-->
+            <div class="offerTitle" th:text="${offerTitle}" />
+            <!--            <div class="offerTitle" th:text="${app}" />-->
+            <!--            <div class="offerDate" th:text="'Data zakończenia: ' + ${app.get().endDate}"/>-->
+            <div class="offerHeader" > Status aplikacji </div>
+            <div class="offerDate" th:text="${appStatus}"/>
+            <div class="offerHeader" > Wymagania </div>
 
+            <!--            <button type="button" class="applayButton" th:disabled="${testButton}">Rozwiąż test</button>-->
+            <!--            <div class="offerDate" th:text="${offer.get().requirements}" />-->
+            <!--            <div class="offerHeader" > Wynagrodzenie </div>-->
+            <!--            <div class="offerDate" th:text="${offer.get().salary} + ' PLN miesięcznie'" />-->
+            <!--            <div class="offerHeader" > Ilość vacatów </div>-->
+            <!--            <div class="offerDate" th:text="${offer.get().vacantNumber}" />-->
+            <!--                        <p th:text="'offer: ' + ${offer.toString()}" />-->
+
+
+            <div th:switch="${testButton}">
+                <button type="submit" class="testButton" th:case="true" disabled>Rozwiąż test</button>
+                <form th:action="@{'/home/test/resolve/before/'+${id}}" method="GET" class="form-signin">
+                    <button type="submit" class="testButton" th:case="*" >Test</button>
+                </form>
+
+            </div>
+
+            <!--            <div th:switch="${isTestResult}">-->
+            <!--                <div class="offerHeader" th:case="false"></div>-->
+            <!--                <div class="offerHeader" th:case="true">-->
+            <!--                    <div class="offerDate" th:text="'Wynik: '+${result}+' z '+${questionsQuan}" />-->
+            <!--                </div>-->
+
+            <!--            </div>-->
+
+            <div class="offerHeader">CV</div>
+            <div class="offerDate" th:text="${cv}" />
+            <!--            <div th:switch="${testButton}">-->
+            <!--                <button type="submit" class="applayButton" th:case="'true' disabled>Rozwiąż test</button>-->
+            <!--                <button type="submit" class="applayButton" th:case="'false'">Rozwiąż test</button>-->
+            <!--            </div>-->
         </div>
 
     </div>
@@ -88,6 +122,6 @@
     </div>
 
 </div>
-
+</div>
 </body>
 </html>
